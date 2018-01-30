@@ -2,20 +2,10 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var api = express.Router();
 var funciones = require('../functions/consultas');
-var interfisca = require("../connection/mongo").interfisca;
+var interfisca = require("../connection/mongo");
 
-
-api.get('/evento', (res, req) => {
-    interfisca.find({}, function(err, res) {
-        if (err) throw err;
-        console.log('mensajito pitero ');
-        console.log(res);
-    });
-    res.status(200).send();
-    //console.log(interfisca);
-    //res.statusCode(200);
-});
-//api.get('/tierra', );
+api.get('/evento', interfisca.evento);
+api.get('/tierra', interfisca.tierra);
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
