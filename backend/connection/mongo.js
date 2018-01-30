@@ -18,11 +18,11 @@ mongoose.connect(url, (error) => {
 var schema = new Schema({});
 interfisca = mongoose.model('interfisca', schema);
 */
-function evento(req, res) {
+function eventoPRI(req, res) {
     MongoClient.connect(url, function(err, client) {
         if (err) { console.error(err); return; }
         interfisca = client.db('interfisca').collection('eventofisca');
-        interfisca.find({}).toArray(function(err, docs) {
+        interfisca.find({ alianza: "PRI-PVEM-PANAL" }).toArray(function(err, docs) {
             assert.equal(err, null);
             //console.log(docs[0]);
             res.send(docs);
@@ -30,11 +30,11 @@ function evento(req, res) {
     });
 }
 
-function tierra(req, res) {
+function tierraPRI(req, res) {
     MongoClient.connect(url, function(err, client) {
         if (err) { console.error(err); return; }
         interfisca = client.db('interfisca').collection('pubfija');
-        interfisca.find({}).toArray(function(err, docs) {
+        interfisca.find({ alianza: "PRI-PVEM-PANAL" }).toArray(function(err, docs) {
             assert.equal(err, null);
             //console.log(docs[0]);
             res.send(docs);
@@ -42,8 +42,59 @@ function tierra(req, res) {
     });
 }
 
+function eventoPAN(req, res) {
+    MongoClient.connect(url, function(err, client) {
+        if (err) { console.error(err); return; }
+        interfisca = client.db('interfisca').collection('eventofisca');
+        interfisca.find({ alianza: "PAN-PRD-MC" }).toArray(function(err, docs) {
+            assert.equal(err, null);
+            //console.log(docs[0]);
+            res.send(docs);
+        });
+    });
+}
+
+function tierraPAN(req, res) {
+    MongoClient.connect(url, function(err, client) {
+        if (err) { console.error(err); return; }
+        interfisca = client.db('interfisca').collection('pubfija');
+        interfisca.find({ alianza: "PAN-PRD-MC" }).toArray(function(err, docs) {
+            assert.equal(err, null);
+            //console.log(docs[0]);
+            res.send(docs);
+        });
+    });
+}
+
+function eventoMORENA(req, res) {
+    MongoClient.connect(url, function(err, client) {
+        if (err) { console.error(err); return; }
+        interfisca = client.db('interfisca').collection('eventofisca');
+        interfisca.find({ alianza: "MORENA-PT-PES" }).toArray(function(err, docs) {
+            assert.equal(err, null);
+            //console.log(docs[0]);
+            res.send(docs);
+        });
+    });
+}
+
+function tierraMORENA(req, res) {
+    MongoClient.connect(url, function(err, client) {
+        if (err) { console.error(err); return; }
+        interfisca = client.db('interfisca').collection('pubfija');
+        interfisca.find({ alianza: "MORENA-PT-PES" }).toArray(function(err, docs) {
+            assert.equal(err, null);
+            //console.log(docs[0]);
+            res.send(docs);
+        });
+    });
+}
 
 module.exports = {
-    evento,
-    tierra
+    eventoPRI,
+    tierraPRI,
+    eventoPAN,
+    tierraPAN,
+    eventoMORENA,
+    tierraMORENA
 };
