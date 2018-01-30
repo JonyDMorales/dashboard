@@ -3,13 +3,20 @@ import { Http } from '@angular/http';
 
 @Injectable()
 export class ConsultaService {
-  
-  public url:string = 'http://api-finalfinal4.us-east-1.elasticbeanstalk.com/';
 
-  constructor(private _http: Http) { }
+    public url:string = 'http://localhost:9000';
+    //public url:string = 'http://dashboard-integra.us-east-1.elasticbeanstalk.com';
 
-  public getEvent(){
-    return this._http.post(this.url, {});
-  }
+    constructor(private _http: Http) { }
+
+    public getEventPRI():any {
+        this.url += '/eventoPRI-PVEM-PANAL';
+        return this._http.get(this.url);
+    }
+
+    public getTierraPRI():any {
+        this.url += '/tierraPRI-PVEM-PANAL';
+        return this._http.get(this.url);
+    }
 
 }
