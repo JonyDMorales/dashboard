@@ -9,6 +9,187 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        #chartPRI {
+            color: black;
+            width: 100%;
+            height: 500px;
+        }
+        
+        #chartPAN {
+            color: black;
+            width: 100%;
+            height: 500px;
+        }
+        
+        #chartMORENA {
+            color: black;
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+
+    <!-- Resources -->
+    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
+
+    <script>
+        var gaugeChart = AmCharts.makeChart("chartPRI", {
+            "type": "gauge",
+            "theme": "white",
+            "axes": [{
+                "axisThickness": 1,
+                "axisAlpha": 0.2,
+                "tickAlpha": 0.2,
+                "valueInterval": 100,
+                "bands": [{
+                    "color": "#84b761",
+                    "endValue": 500,
+                    "startValue": 0
+                }, {
+                    "color": "#fdd400",
+                    "endValue": 525,
+                    "startValue": 500
+                }, {
+                    "color": "#cc4748",
+                    "endValue": 1000,
+                    "innerRadius": "95%",
+                    "startValue": 525
+                }],
+                "bottomText": "$ 0 MXN",
+                "bottomTextYOffset": -20,
+                "endValue": 1000
+            }],
+            "arrows": [{}],
+            "export": {
+                "enabled": true
+            }
+        });
+
+        setInterval(randomValue, 2000);
+
+        // set random value
+        function randomValue() {
+            var value = Math.round(Math.random() * 200);
+            if (gaugeChart) {
+                if (gaugeChart.arrows) {
+                    if (gaugeChart.arrows[0]) {
+                        if (gaugeChart.arrows[0].setValue) {
+                            gaugeChart.arrows[0].setValue(100);
+                            gaugeChart.axes[0].setBottomText("$" + 100 + " MNX");
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        var gaugeChart = AmCharts.makeChart("chartPAN", {
+            "type": "gauge",
+            "theme": "white",
+            "axes": [{
+                "axisThickness": 1,
+                "axisAlpha": 0.2,
+                "tickAlpha": 0.2,
+                "valueInterval": 100,
+                "bands": [{
+                    "color": "#84b761",
+                    "endValue": 500,
+                    "startValue": 0
+                }, {
+                    "color": "#fdd400",
+                    "endValue": 525,
+                    "startValue": 500
+                }, {
+                    "color": "#cc4748",
+                    "endValue": 1000,
+                    "innerRadius": "95%",
+                    "startValue": 525
+                }],
+                "bottomText": "$ 0 MXN",
+                "bottomTextYOffset": -20,
+                "endValue": 1000
+            }],
+            "arrows": [{}],
+            "export": {
+                "enabled": true
+            }
+        });
+
+        setInterval(randomValue, 2000);
+
+        // set random value
+        function randomValue() {
+            var value = Math.round(Math.random() * 200);
+            if (gaugeChart) {
+                if (gaugeChart.arrows) {
+                    if (gaugeChart.arrows[0]) {
+                        if (gaugeChart.arrows[0].setValue) {
+                            gaugeChart.arrows[0].setValue(100);
+                            gaugeChart.axes[0].setBottomText("$" + 100 + " MNX");
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <script>
+        var gaugeChart = AmCharts.makeChart("chartMORENA", {
+            "type": "gauge",
+            "theme": "white",
+            "axes": [{
+                "axisThickness": 1,
+                "axisAlpha": 0.2,
+                "tickAlpha": 0.2,
+                "valueInterval": 100,
+                "bands": [{
+                    "color": "#84b761",
+                    "endValue": 500,
+                    "startValue": 0
+                }, {
+                    "color": "#fdd400",
+                    "endValue": 525,
+                    "startValue": 500
+                }, {
+                    "color": "#cc4748",
+                    "endValue": 1000,
+                    "innerRadius": "95%",
+                    "startValue": 525
+                }],
+                "bottomText": "$ 0 MXN",
+                "bottomTextYOffset": -20,
+                "endValue": 1000
+            }],
+            "arrows": [{}],
+            "export": {
+                "enabled": true
+            }
+        });
+
+        setInterval(randomValue, 2000);
+
+        // set random value
+        function randomValue() {
+            var value = Math.round(Math.random() * 200);
+            if (gaugeChart) {
+                if (gaugeChart.arrows) {
+                    if (gaugeChart.arrows[0]) {
+                        if (gaugeChart.arrows[0].setValue) {
+                            gaugeChart.arrows[0].setValue(100);
+                            gaugeChart.axes[0].setBottomText("$" + 100 + " MNX");
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
 </head>
 
 <body>

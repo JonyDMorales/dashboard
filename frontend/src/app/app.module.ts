@@ -10,13 +10,19 @@ import { HomeComponent } from './components/home/home.component';
 
 import { APP_ROUTING } from './app.routes';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { PriComponent } from './components/pri/pri.component';
+import { PanComponent } from './components/pan/pan.component';
+import { MorenaComponent } from './components/morena/morena.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TacometroComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    PriComponent,
+    PanComponent,
+    MorenaComponent
   ],
   imports: [
     BrowserModule,

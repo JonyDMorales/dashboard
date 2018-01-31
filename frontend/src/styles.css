@@ -3,3 +3,8 @@
 .main {
     margin-top: 60px;
 }
+
+.navbar-jony {
+    background-color: #212529 !important;
+    padding-block-start: 15px;
+}
