@@ -10,183 +10,74 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <style>
-        #chartPRI {
-            color: black;
-            width: 100%;
-            height: 500px;
-        }
-        
-        #chartPAN {
-            color: black;
-            width: 100%;
-            height: 500px;
-        }
-        
-        #chartMORENA {
-            color: black;
-            width: 100%;
-            height: 500px;
-        }
-    </style>
-
-    <!-- Resources -->
-    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-    <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
-    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
-
-    <script>
-        var gaugeChart = AmCharts.makeChart("chartPRI", {
-            "type": "gauge",
-            "theme": "white",
-            "axes": [{
-                "axisThickness": 1,
-                "axisAlpha": 0.2,
-                "tickAlpha": 0.2,
-                "valueInterval": 100,
-                "bands": [{
-                    "color": "#84b761",
-                    "endValue": 500,
-                    "startValue": 0
-                }, {
-                    "color": "#fdd400",
-                    "endValue": 525,
-                    "startValue": 500
-                }, {
-                    "color": "#cc4748",
-                    "endValue": 1000,
-                    "innerRadius": "95%",
-                    "startValue": 525
-                }],
-                "bottomText": "$ 0 MXN",
-                "bottomTextYOffset": -20,
-                "endValue": 1000
-            }],
-            "arrows": [{}],
-            "export": {
-                "enabled": true
-            }
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['gauge']
         });
+        google.charts.setOnLoadCallback(drawChart);
 
-        setInterval(randomValue, 2000);
+        function drawChart() {
 
-        // set random value
-        function randomValue() {
-            var value = Math.round(Math.random() * 200);
-            if (gaugeChart) {
-                if (gaugeChart.arrows) {
-                    if (gaugeChart.arrows[0]) {
-                        if (gaugeChart.arrows[0].setValue) {
-                            gaugeChart.arrows[0].setValue(100);
-                            gaugeChart.axes[0].setBottomText("$" + 100 + " MNX");
-                        }
-                    }
-                }
-            }
+            var data = google.visualization.arrayToDataTable([
+                ['Label', 'Value'],
+                ['PRI', 80],
+                ['PAN', 55],
+                ['MORENA', 68]
+            ]);
+
+            var options = {
+                width: 400,
+                height: 120,
+                redFrom: 90,
+                redTo: 100,
+                yellowFrom: 75,
+                yellowTo: 90,
+                minorTicks: 5
+            };
+
+            var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+
+            setInterval(function() {
+                data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+                chart.draw(data, options);
+            }, 13000);
+            setInterval(function() {
+                data.setValue(1, 1, 40 + Math.round(60 * Math.random()));
+                chart.draw(data, options);
+            }, 5000);
+            setInterval(function() {
+                data.setValue(2, 1, 60 + Math.round(20 * Math.random()));
+                chart.draw(data, options);
+            }, 26000);
         }
     </script>
-
-    <script>
-        var gaugeChart = AmCharts.makeChart("chartPAN", {
-            "type": "gauge",
-            "theme": "white",
-            "axes": [{
-                "axisThickness": 1,
-                "axisAlpha": 0.2,
-                "tickAlpha": 0.2,
-                "valueInterval": 100,
-                "bands": [{
-                    "color": "#84b761",
-                    "endValue": 500,
-                    "startValue": 0
-                }, {
-                    "color": "#fdd400",
-                    "endValue": 525,
-                    "startValue": 500
-                }, {
-                    "color": "#cc4748",
-                    "endValue": 1000,
-                    "innerRadius": "95%",
-                    "startValue": 525
-                }],
-                "bottomText": "$ 0 MXN",
-                "bottomTextYOffset": -20,
-                "endValue": 1000
-            }],
-            "arrows": [{}],
-            "export": {
-                "enabled": true
-            }
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {
+            packages: ["corechart"]
         });
+        google.charts.setOnLoadCallback(drawChart);
 
-        setInterval(randomValue, 2000);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work', 11],
+                ['Eat', 2],
+                ['Commute', 2],
+                ['Watch TV', 2],
+                ['Sleep', 7]
+            ]);
 
-        // set random value
-        function randomValue() {
-            var value = Math.round(Math.random() * 200);
-            if (gaugeChart) {
-                if (gaugeChart.arrows) {
-                    if (gaugeChart.arrows[0]) {
-                        if (gaugeChart.arrows[0].setValue) {
-                            gaugeChart.arrows[0].setValue(100);
-                            gaugeChart.axes[0].setBottomText("$" + 100 + " MNX");
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+            var options = {
+                title: 'My Daily Activities',
+                pieHole: 0.4,
+            };
 
-    <script>
-        var gaugeChart = AmCharts.makeChart("chartMORENA", {
-            "type": "gauge",
-            "theme": "white",
-            "axes": [{
-                "axisThickness": 1,
-                "axisAlpha": 0.2,
-                "tickAlpha": 0.2,
-                "valueInterval": 100,
-                "bands": [{
-                    "color": "#84b761",
-                    "endValue": 500,
-                    "startValue": 0
-                }, {
-                    "color": "#fdd400",
-                    "endValue": 525,
-                    "startValue": 500
-                }, {
-                    "color": "#cc4748",
-                    "endValue": 1000,
-                    "innerRadius": "95%",
-                    "startValue": 525
-                }],
-                "bottomText": "$ 0 MXN",
-                "bottomTextYOffset": -20,
-                "endValue": 1000
-            }],
-            "arrows": [{}],
-            "export": {
-                "enabled": true
-            }
-        });
-
-        setInterval(randomValue, 2000);
-
-        // set random value
-        function randomValue() {
-            var value = Math.round(Math.random() * 200);
-            if (gaugeChart) {
-                if (gaugeChart.arrows) {
-                    if (gaugeChart.arrows[0]) {
-                        if (gaugeChart.arrows[0].setValue) {
-                            gaugeChart.arrows[0].setValue(100);
-                            gaugeChart.axes[0].setBottomText("$" + 100 + " MNX");
-                        }
-                    }
-                }
-            }
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
         }
     </script>
 

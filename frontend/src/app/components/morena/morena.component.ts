@@ -7,17 +7,18 @@ import { ConsultaService } from '../../services/consulta.service';
     styles: []
 })
 export class MorenaComponent implements OnInit {
-    
-    public eventos:JSON;
-    public tierra:JSON;
+    public eventos;
+    public tierra;
 
     constructor(public _consultaService: ConsultaService) {
         this._consultaService.getEventMORENA().subscribe( res => {
-            //this.eventos = JSON.parse(res._body);
+            console.log(res);
+            this.eventos = JSON.parse(res);
         });
-    
+
         this._consultaService.getTierraMORENA().subscribe( res => {
-            //this.tierra = JSON.parse(res._body);
+            console.log(res);
+            this.tierra = JSON.parse(res);
         });
      }
 

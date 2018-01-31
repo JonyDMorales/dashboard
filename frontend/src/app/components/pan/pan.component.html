@@ -1,3 +1,60 @@
-<p>
-  pan works!
-</p>
+<h2> PAN </h2>
+<hr>
+<div *ngIf=" !eventos && !tierra" class="text-center">
+    No hay datos aun. :(
+</div>
+<div *ngIf=" eventos " class="row">
+    <h3> Eventos </h3>
+    <div class="col-md-8">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Sede</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Personas</th>
+                    <th scope="col">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of eventos; let i = index">
+                    <th> {{ i }} </th>
+                    <td> {{ item.estado }} </td>
+                    <td> {{ item.sede }} </td>
+                    <td> {{ item.fecha | date:'medium' }} </td>
+                    <td> {{ item.quienes }} </td>
+                    <td> {{ item.precio | currency }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div *ngIf=" tierra " class="row">
+    <h3> Eventos </h3>
+    <div class="col-md-8">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Sede</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Personas</th>
+                    <th scope="col">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of eventos; let i = index">
+                    <th> {{ i }} </th>
+                    <td> {{ item.estado }} </td>
+                    <td> {{ item.sede }} </td>
+                    <td> {{ item.fecha | date:'medium' }} </td>
+                    <td> {{ item.quienes }} </td>
+                    <td> {{ item.precio | currency }} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
