@@ -60,7 +60,7 @@ export class ConsultaService {
     }
 
     public getTierraMORENA() {
-        const uri = this.url + '/eventoMORENA-PT-PES';
+        const uri = this.url + '/tierraMORENA-PT-PES';
         return this._http.get(uri).map((res) => {
             if (`${ res }.?_body`) {
                 return `${ res }.?_body`;

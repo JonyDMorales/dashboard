@@ -7,6 +7,7 @@ var interfisca = require("../connection/mongo");
 
 api.get('/eventoPRI-PVEM-PANAL', interfisca.eventoPRI);
 api.get('/tierraPRI-PVEM-PANAL', interfisca.tierraPRI);
+api.get('/gastoTotal', interfisca.gastoTotal);
 
 api.get('/eventoPAN-PRD-MC', interfisca.eventoPAN);
 api.get('/tierraPAN-PRD-MC', interfisca.tierraPAN);
