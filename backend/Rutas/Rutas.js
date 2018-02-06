@@ -3,19 +3,10 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var api = express.Router();
 var funciones = require('../functions/consultas');
-var interfisca = require("../connection/mongo");
 
-api.get('/gastoTotal', interfisca.gastoTotal);
-api.get('/conteoEventos', interfisca.conteoEventos);
-
-api.get('/eventoPRI-PVEM-PANAL', interfisca.eventoPRI);
-api.get('/tierraPRI-PVEM-PANAL', interfisca.tierraPRI);
-
-api.get('/eventoPAN-PRD-MC', interfisca.eventoPAN);
-api.get('/tierraPAN-PRD-MC', interfisca.tierraPAN);
-
-api.get('/eventoMORENA-PT-PES', interfisca.eventoMORENA);
-api.get('/tierraMORENA-PT-PES', interfisca.tierraMORENA);
+api.get('/gastoTotal', funciones.gastoTotal);
+api.get('/conteoEventos', funciones.conteoEventos);
+api.get('/consulta', funciones.consulta);
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
