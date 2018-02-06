@@ -2,9 +2,10 @@ var interfisca = require("../connection/mongo");
 
 function consulta(req, res) {
     var alianza = req.headers['alianza'];
+    var persona = req.headers['persona'];
     var categoria = req.headers['categoria'];
 
-    interfisca.consultarPubfija(alianza, categoria, function(docs) {
+    interfisca.consultarPubfija(alianza, persona, categoria, function(docs) {
         if (docs)
             res.send(docs);
         else
@@ -14,10 +15,12 @@ function consulta(req, res) {
 
 function gastoTotal(req, res) {
     var alianza = req.headers['alianza'];
+    var persona = req.headers['persona'];
     var categoria = req.headers['categoria'];
+
     var total = 0;
 
-    interfisca.consultarPubfija(alianza, categoria, function(docs) {
+    interfisca.consultarPubfija(alianza, persona, categoria, function(docs) {
         if (!docs) {
             res.send('');
         }
@@ -32,6 +35,7 @@ function gastoTotal(req, res) {
 
 function gastoCategoria(req, res) {
     var alianza = req.headers['alianza'];
+    var persona = req.headers['persona'];
     var categoria = req.headers['categoria'];
 
     var eventos = {
@@ -69,7 +73,7 @@ function gastoCategoria(req, res) {
         'ZACATECAS': 0
     };
 
-    interfisca.consultarPubfija(alianza, categoria, function(docs) {
+    interfisca.consultarPubfija(alianza, persona, categoria, function(docs) {
         if (!docs) {
             res.send('');
         }

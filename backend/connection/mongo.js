@@ -35,16 +35,24 @@ function consultarEventoFisca(alianza, persona, categoria, callback) {
     });
 }
 
-function consultarPubfija(alianza, categoria, callback) {
+function consultarPubfija(alianza, persona, categoria, callback) {
 
     var query = '';
 
-    if (alianza && categoria) {
-        query = '{"alianza":"' + alianza + '", "categoria":"' + categoria + '" }';
-    } else if (alianza && !categoria) {
-        query = '{"alianza":"' + alianza + '" }';
-    } else if (!alianza && categoria) {
-        query = '{ "categoria":"' + categoria + '" }';
+    if (alianza && persona && categoria) {
+        query = '{"alianza":"' + alianza + '", "quienes_aparecen":{' + persona + '}, "categoria":"' + categoria + '" }';
+    } else if (alianza && persona && !categoria) {
+        query = '{"alianza":"' + alianza + '", "quienes_aparecen":{' + persona + '} }';
+    } else if (alianza && !persona && categoria) {
+        query = '{"alianza":"' + alianza + '", "categoria": "' + categoria + '" }';
+    } else if (!alianza && persona && categoria) {
+        query = '{ "quienes_aparecen":{' + persona + '}, "categoria:" "' + categoria + '" }';
+    } else if (!alianza && !persona && categoria) {
+        query = '{"' + categoria + '" : { "$exists": true } }';
+    } else if (alianza && !persona && !categoria) {
+        query = '{ "alianza":"' + alianza + '" }';
+    } else if (!alianza && persona && !categoria) {
+        query = '{ "quienes_aparecen":{' + persona + '} }';
     }
 
     query = JSON.parse(query);

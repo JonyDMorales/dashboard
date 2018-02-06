@@ -5,14 +5,14 @@ var api = express.Router();
 var Eventos = require('../functions/consultasEventos');
 var Tierra = require('../functions/consultasTierra');
 
-api.get('/eventos-gastoTotal', Eventos.gastoTotal);
-api.get('/eventos-conteoEventos', Eventos.conteoEventos);
-api.get('/eventos-gastoEventos', Eventos.gastoEventos);
-api.get('/eventos-consulta', Eventos.consulta);
+api.get('/eventos/gastototal', Eventos.gastoTotal);
+api.get('/eventos/conteoeventos', Eventos.conteoEventos);
+api.get('/eventos/gastoeventos', Eventos.gastoEventos);
+api.get('/eventos/consulta', Eventos.consulta);
 
-api.get('/tierra-gastoTotal', Tierra.gastoTotal);
-api.get('/tierra-gastoCategoria', Tierra.gastoCategoria);
-api.get('/tierra-consulta', Tierra.consulta);
+api.get('/tierra/gastototal', Tierra.gastoTotal);
+api.get('/tierra/gastocategoria', Tierra.gastoCategoria);
+api.get('/tierra/consulta', Tierra.consulta);
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
