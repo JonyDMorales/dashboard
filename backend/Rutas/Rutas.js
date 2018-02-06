@@ -5,9 +5,11 @@ var api = express.Router();
 var funciones = require('../functions/consultas');
 var interfisca = require("../connection/mongo");
 
+api.get('/gastoTotal', interfisca.gastoTotal);
+api.get('/conteoEventos', interfisca.conteoEventos);
+
 api.get('/eventoPRI-PVEM-PANAL', interfisca.eventoPRI);
 api.get('/tierraPRI-PVEM-PANAL', interfisca.tierraPRI);
-api.get('/gastoTotal', interfisca.gastoTotal);
 
 api.get('/eventoPAN-PRD-MC', interfisca.eventoPAN);
 api.get('/tierraPAN-PRD-MC', interfisca.tierraPAN);
