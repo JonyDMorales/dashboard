@@ -22,7 +22,7 @@ function gastoTotal(req, res) {
     });
 }
 
-function conteoEventos() {
+function conteoEventos(req, res) {
     var alianza = req.headers['alianza'];
     var persona = req.headers['persona'];
     var categoria = req.headers['categoria'];
