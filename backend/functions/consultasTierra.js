@@ -2,10 +2,9 @@ var interfisca = require("../connection/mongo");
 
 function consulta(req, res) {
     var alianza = req.headers['alianza'];
-    var persona = req.headers['persona'];
     var categoria = req.headers['categoria'];
 
-    interfisca.consultarEventoFisca(alianza, persona, categoria, function(docs) {
+    interfisca.consultarPubfija(alianza, categoria, function(docs) {
         if (docs)
             res.send(docs);
         else
@@ -15,11 +14,10 @@ function consulta(req, res) {
 
 function gastoTotal(req, res) {
     var alianza = req.headers['alianza'];
-    var persona = req.headers['persona'];
     var categoria = req.headers['categoria'];
     var total = 0;
 
-    interfisca.consultarEventoFisca(alianza, persona, categoria, function(docs) {
+    interfisca.consultarPubfija(alianza, categoria, function(docs) {
         if (!docs) {
             res.send('');
         }
@@ -32,9 +30,8 @@ function gastoTotal(req, res) {
     });
 }
 
-function conteoEventos(req, res) {
+function gastoCategoria(req, res) {
     var alianza = req.headers['alianza'];
-    var persona = req.headers['persona'];
     var categoria = req.headers['categoria'];
 
     var eventos = {
@@ -72,14 +69,14 @@ function conteoEventos(req, res) {
         'ZACATECAS': 0
     };
 
-    interfisca.consultarEventoFisca(alianza, persona, categoria, function(docs) {
+    interfisca.consultarPubfija(alianza, categoria, function(docs) {
         if (!docs) {
             res.send('');
         }
 
         for (var i of docs) {
             if (i.estado) {
-                eventos[i.estado] += 1;
+                eventos[i.estado] += i.precio;
             }
         }
         res.send({ eventos: eventos });
@@ -89,5 +86,5 @@ function conteoEventos(req, res) {
 module.exports = {
     consulta,
     gastoTotal,
-    conteoEventos
+    gastoCategoria
 };

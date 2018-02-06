@@ -2,11 +2,17 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var api = express.Router();
-var funciones = require('../functions/consultas');
+var Eventos = require('../functions/consultasEventos');
+var Tierra = require('../functions/consultasTierra');
 
-api.get('/gastoTotal', funciones.gastoTotal);
-api.get('/conteoEventos', funciones.conteoEventos);
-api.get('/consulta', funciones.consulta);
+api.get('/eventos-gastoTotal', Eventos.gastoTotal);
+api.get('/eventos-conteoEventos', Eventos.conteoEventos);
+api.get('/eventos-gastoEventos', Eventos.gastoEventos);
+api.get('/eventos-consulta', Eventos.consulta);
+
+api.get('/tierra-gastoTotal', Tierra.gastoTotal);
+api.get('/tierra-gastoCategoria', Tierra.gastoCategoria);
+api.get('/tierra-consulta', Tierra.consulta);
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));

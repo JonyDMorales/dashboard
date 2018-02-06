@@ -35,18 +35,31 @@ function consultarEventoFisca(alianza, persona, categoria, callback) {
     });
 }
 
-function tierraMORENA(req, res) {
+function consultarPubfija(alianza, categoria, callback) {
+
+    var query = '';
+
+    if (alianza && categoria) {
+        query = '{"alianza":"' + alianza + '", "categoria":"' + categoria + '" }';
+    } else if (alianza && !categoria) {
+        query = '{"alianza":"' + alianza + '" }';
+    } else if (!alianza && categoria) {
+        query = '{ "categoria":"' + categoria + '" }';
+    }
+
+    query = JSON.parse(query);
+
     MongoClient.connect(url, function(err, client) {
         if (err) { console.error(err); return; }
         interfisca = client.db('interfisca').collection('pubfija');
-        interfisca.find({ alianza: "MORENA-PT-PES" }).toArray(function(err, docs) {
+        interfisca.find(query).toArray(function(err, docs) {
             assert.equal(err, null);
-            //console.log(docs[0]);
-            res.send(docs);
+            callback(docs);
         });
     });
 }
 
 module.exports = {
-    consultarEventoFisca
+    consultarEventoFisca,
+    consultarPubfija
 };
