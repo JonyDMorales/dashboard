@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
 
 import { ConsultaService } from './services/consulta.service';
 import { GraphicsService } from './services/graphics.service';
@@ -29,8 +30,9 @@ import { APP_ROUTING } from './app.routes';
     ],
     imports: [
         BrowserModule,
-        HttpModule,
+        HttpClientModule,
         FormsModule,
+        ChartsModule,
         APP_ROUTING
     ],
     providers: [ ConsultaService, GraphicsService ],

@@ -11,18 +11,7 @@ export class PriComponent implements OnInit {
     public eventos;
     public tierra;
 
-    constructor(public _consultaService: ConsultaService) {
-        this._consultaService.getEventPRI().subscribe( res => {
-            console.log(res);
-            this.eventos = JSON.parse(res);
-        });
-
-        this._consultaService.getTierraPRI().subscribe( res => {
-            console.log(res);
-            this.tierra = JSON.parse(res);
-        });
-
-    }
+    constructor(public _consultaService: ConsultaService) {}
 
     ngOnInit() {}
 
