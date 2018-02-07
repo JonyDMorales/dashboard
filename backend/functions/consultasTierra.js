@@ -1,9 +1,9 @@
 var interfisca = require("../connection/mongo");
 
 function consulta(req, res) {
-    var alianza = req.headers['alianza'];
-    var persona = req.headers['persona'];
-    var categoria = req.headers['categoria'];
+    var alianza = req.body['alianza'];
+    var persona = req.body['persona'];
+    var categoria = req.body['categoria'];
 
     interfisca.consultarPubfija(alianza, persona, categoria, function(docs) {
         if (docs)
@@ -14,9 +14,9 @@ function consulta(req, res) {
 }
 
 function gastoTotal(req, res) {
-    var alianza = req.headers['alianza'];
-    var persona = req.headers['persona'];
-    var categoria = req.headers['categoria'];
+    var alianza = req.body['alianza'];
+    var persona = req.body['persona'];
+    var categoria = req.body['categoria'];
 
     var total = 0;
 
@@ -34,9 +34,9 @@ function gastoTotal(req, res) {
 }
 
 function gastoCategoria(req, res) {
-    var alianza = req.headers['alianza'];
-    var persona = req.headers['persona'];
-    var categoria = req.headers['categoria'];
+    var alianza = req.body['alianza'];
+    var persona = req.body['persona'];
+    var categoria = req.body['categoria'];
 
     var eventos = {
         'AGUASCALIENTES': 0,

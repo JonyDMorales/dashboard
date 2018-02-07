@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+
 
 @Injectable()
 export class ConsultaService {
@@ -10,14 +12,9 @@ export class ConsultaService {
     constructor( private _http: HttpClient) { }
 
     public getEventPRI() {
-        const uri = this.url + '/eventos/gastototal';
-        const headers = new HttpHeaders({
-            'alianza': 'PRI-PVEM-PANAL'
-        });
-        return this._http.get(uri, { headers }).map((res) => {
-            /*if (`${ res }.?_body`) {
-                return `${ res }.?_body`;
-            }*/
+        const uri = this.url + '/eventos/consulta';
+        const header = new HttpHeaders();
+        return this._http.post(uri, { 'alianza': 'MORENA-PT-PES' } ).map((res) => {
             return res;
         });
     }

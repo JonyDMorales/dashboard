@@ -1,9 +1,9 @@
 var interfisca = require("../connection/mongo");
 
 function consulta(req, res) {
-    var alianza = req.headers['alianza'];
-    var persona = req.headers['persona'];
-    var categoria = req.headers['categoria'];
+    var alianza = req.body['alianza'];
+    var persona = req.body['persona'];
+    var categoria = req.body['categoria'];
 
     interfisca.consultarEventoFisca(alianza, persona, categoria, function(docs) {
         if (docs)
@@ -14,9 +14,9 @@ function consulta(req, res) {
 }
 
 function gastoTotal(req, res) {
-    var alianza = req.headers['alianza'];
-    var persona = req.headers['persona'];
-    var categoria = req.headers['categoria'];
+    var alianza = req.body['alianza'];
+    var persona = req.body['persona'];
+    var categoria = req.body['categoria'];
     var total = 0;
 
     interfisca.consultarEventoFisca(alianza, persona, categoria, function(docs) {
@@ -33,9 +33,9 @@ function gastoTotal(req, res) {
 }
 
 function conteoEventos(req, res) {
-    var alianza = req.headers['alianza'];
-    var persona = req.headers['persona'];
-    var categoria = req.headers['categoria'];
+    var alianza = req.body['alianza'];
+    var persona = req.body['persona'];
+    var categoria = req.body['categoria'];
 
     var eventos = {
         'AGUASCALIENTES': 0,
@@ -87,9 +87,9 @@ function conteoEventos(req, res) {
 }
 
 function gastoEventos(req, res) {
-    var alianza = req.headers['alianza'];
-    var persona = req.headers['persona'];
-    var categoria = req.headers['categoria'];
+    var alianza = req.body['alianza'];
+    var persona = req.body['persona'];
+    var categoria = req.body['categoria'];
 
     var eventos = {
         'AGUASCALIENTES': 0,

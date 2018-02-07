@@ -15,8 +15,7 @@ export class HomeComponent implements OnInit {
                  public _consultaService: ConsultaService ) { }
 
     ngOnInit() {
-        //this.eventos = this._graphicsService.graphicDonut('eventos');
-        this._consultaService.getEventPRI().subscribe(res =>{
+        this._consultaService.getEventPRI().subscribe(res => {
             console.log(res);
         });
     }
