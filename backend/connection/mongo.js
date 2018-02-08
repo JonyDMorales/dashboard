@@ -31,6 +31,7 @@ function consultarEventoFisca(alianza, persona, categoria, callback) {
         interfisca.find(query).toArray(function(err, docs) {
             assert.equal(err, null);
             callback(docs);
+            client.close();
         });
     });
 }
@@ -63,6 +64,7 @@ function consultarPubfija(alianza, persona, categoria, callback) {
         interfisca.find(query).toArray(function(err, docs) {
             assert.equal(err, null);
             callback(docs);
+            client.close();
         });
     });
 }
