@@ -11,15 +11,6 @@ export class MorenaComponent implements OnInit {
     public tierra;
 
     constructor(public _consultaService: ConsultaService) {
-        this._consultaService.getEventMORENA().subscribe( res => {
-            console.log(res);
-            this.eventos = JSON.parse(res);
-        });
-
-        this._consultaService.getTierraMORENA().subscribe( res => {
-            console.log(res);
-            this.tierra = JSON.parse(res);
-        });
      }
 
     ngOnInit() {}

@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
+import { NgxGaugeModule } from 'ngx-gauge';
 
 import { ConsultaService } from './services/consulta.service';
 import { GraphicsService } from './services/graphics.service';
@@ -34,6 +35,7 @@ import { APP_ROUTING } from './app.routes';
         HttpClientModule,
         FormsModule,
         ChartsModule,
+        NgxGaugeModule,
         APP_ROUTING
     ],
     providers: [ ConsultaService, GraphicsService ],

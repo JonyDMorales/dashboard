@@ -11,62 +11,59 @@ export class ConsultaService {
 
     constructor( private _http: HttpClient) { }
 
-    public getEventPRI() {
-        const uri = this.url + '/eventos/consulta';
+    public getGastoTotalEventos(alianza, persona, categoria) {
+        const uri = this.url + '/eventos/gastototal';
         const header = new HttpHeaders();
-        return this._http.post(uri, { 'alianza': 'MORENA-PT-PES' } ).map((res) => {
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
+            return res['total'];
+        });
+    }
+
+    public getConteoEventos(alianza, persona, categoria) {
+        const uri = this.url + '/eventos/conteoeventos';
+        const header = new HttpHeaders();
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
             return res;
         });
     }
 
-    public getTierraPRI() {
-        const uri = this.url + '/tierraPRI-PVEM-PANAL';
-        return this._http.get(uri).map((res) => {
-            if (`${ res }.?_body`) {
-                return `${ res }.?_body`;
-            }
-            return;
-         });
+    public getGastoEventos(alianza, persona, categoria) {
+        const uri = this.url + '/eventos/gastoeventos';
+        const header = new HttpHeaders();
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
+            return res;
+        });
     }
 
-    public getEventPAN() {
-        const uri = this.url + '/eventoPAN-PRD-MC';
-        return this._http.get(uri).map((res) => {
-            if (`${ res }.?_body`) {
-                return `${ res }.?_body`;
-            }
-            return;
-         });
+    public getConsultaEventos(alianza, persona, categoria) {
+        const uri = this.url + '/eventos/consulta';
+        const header = new HttpHeaders();
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
+            return res;
+        });
     }
 
-    public getTierraPAN() {
-        const uri = this.url + '/tierraPAN-PRD-MC';
-        return this._http.get(uri).map((res) => {
-            if (`${ res }.?_body`) {
-                return `${ res }.?_body`;
-            }
-            return;
-         });
+    public getGastoTotalTierra(alianza, persona, categoria) {
+        const uri = this.url + '/tierra/gastototal';
+        const header = new HttpHeaders();
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
+            return res;
+        });
     }
 
-    public getEventMORENA() {
-        const uri = this.url + '/eventoMORENA-PT-PES';
-        return this._http.get(uri).map((res) => {
-            if (`${ res }.?_body`) {
-                return `${ res }.?_body`;
-            }
-            return;
-         });
+    public getGastoCategoriaTierra(alianza, persona, categoria) {
+        const uri = this.url + '/tierra/gastocategoria';
+        const header = new HttpHeaders();
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
+            return res;
+        });
     }
 
-    public getTierraMORENA() {
-        const uri = this.url + '/tierraMORENA-PT-PES';
-        return this._http.get(uri).map((res) => {
-            if (`${ res }.?_body`) {
-                return `${ res }.?_body`;
-            }
-            return;
-         });
+    public getConsultaTierra(alianza, persona, categoria) {
+        const uri = this.url + '/tierra/consulta';
+        const header = new HttpHeaders();
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
+            return res;
+        });
     }
-
 }

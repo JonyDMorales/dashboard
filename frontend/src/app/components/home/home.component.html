@@ -1,5 +1,16 @@
 <div class="row">
-
-    <canvas id="eventos"> {{ eventos }} </canvas>
+    <div class="col-md-6">
+        <h2> Eventos </h2>
+        <hr>
+        <canvas id="eventos"> {{ eventos }} </canvas>
+    </div>
+    <div class="col-md-6">
+        <h2> Tierra </h2>
+        <hr>
+        <canvas id="tierra"> {{ tierra }} </canvas>
+    </div>
+    <div class="col-md-12">
+        <ngx-gauge [foregroundColor]="color" [type]="gaugeType" min="0" max="1000" thick="10" [value]="gaugeValue" [label]="gaugeLabel" [append]="gaugeAppendText" cap="round"></ngx-gauge>
+    </div>
 
 </div>

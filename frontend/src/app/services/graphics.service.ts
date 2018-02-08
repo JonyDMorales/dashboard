@@ -6,25 +6,10 @@ export class GraphicsService {
 
     constructor() { }
 
-    public graphicDonut(alianza) {
-        return new Chart(alianza, {
+    public graphicDonut(id, estructura, titulo) {
+        return new Chart(id, {
             type: 'doughnut',
-            data: {
-                datasets: [{
-                    data: [
-                        5, 10, 20
-                    ],
-                    backgroundColor: [
-                        '#ffffff', '#000000', '#f56db3'
-                    ],
-                    label: 'Dataset 1'
-                }],
-                labels: [
-                    'PRI',
-                    'PAN',
-                    'MORENA'
-                ]
-            },
+            data: estructura,
             options: {
                 responsive: true,
                 legend: {
@@ -32,7 +17,7 @@ export class GraphicsService {
                 },
                 title: {
                     display: true,
-                    text: 'Dona'
+                    text: titulo
                 },
                 animation: {
                     animateScale: true,
