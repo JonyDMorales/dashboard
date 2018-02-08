@@ -15,11 +15,6 @@ export class HomeComponent implements OnInit {
     gastoTotalPRI = 0;
     gastoTotalPAN = 0;
     gastoTotalMORENA = 0;
-    color = '#2ecc71';
-    gaugeType = 'arch';
-    gaugeValue = 300;
-    gaugeLabel = 'MXN';
-    gaugeAppendText = 'mdp';
 
     constructor( public _graphicsService: GraphicsService, public _consultaService: ConsultaService ) {
         this.getGastoTotal();

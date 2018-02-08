@@ -1,6 +1,13 @@
 <div class="row">
-    <div class="col-md-8"> </div>
-    <div class="col-md-2">
-        <div id="chart_div"></div>
+    <div class="col-md-3" style="position: absolute;">
+        <h2> PRI <small> $300,000,000 </small> </h2>
+        <hr>
+        <ngx-gauge [foregroundColor]="color" [type]="gaugeType" min="0" max="1000" thick="10" [value]="gaugeValue" [label]="gaugeLabel" [append]="gaugeAppendText" cap="round"></ngx-gauge>
+        <h2> PAN <small> $200,000,000 </small> </h2>
+        <hr>
+        <ngx-gauge [foregroundColor]="color" [type]="gaugeType" min="0" max="1000" thick="10" [value]="gaugeValue" [label]="gaugeLabel" [append]="gaugeAppendText" cap="round"></ngx-gauge>
+        <h2> Morena <small> $250,000,000 </small> </h2>
+        <hr>
+        <ngx-gauge [foregroundColor]="color" [type]="gaugeType" min="0" max="1000" thick="10" [value]="gaugeValue" [label]="gaugeLabel" [append]="gaugeAppendText" cap="round"></ngx-gauge>
     </div>
 </div>
