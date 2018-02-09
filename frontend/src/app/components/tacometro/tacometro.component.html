@@ -1,13 +1,13 @@
 <div class="row" style="position: absolute;">
     <div class="tacometro">
-        <h2> PRI <small> $300,000,000 </small> </h2>
+        <h2> PRI <small> {{ costoPRI | currency }} MXN </small> </h2>
         <hr>
-        <ngx-gauge [foregroundColor]="color" [type]="gaugeType" min="0" max="1000" thick="10" [value]="gaugeValue" [label]="gaugeLabel" [append]="gaugeAppendText" cap="round"></ngx-gauge>
-        <h2> PAN <small> $200,000,000 </small> </h2>
+        <ngx-gauge [foregroundColor]="colorPRI" [value]="gaugeValuePRI" type="arch" min="0" max="1000" thick="10" label="MXN" append="mdp" cap="round"></ngx-gauge>
+        <h2> PAN <small> {{ costoPAN | currency }} MXN </small> </h2>
         <hr>
-        <ngx-gauge [foregroundColor]="color" [type]="gaugeType" min="0" max="1000" thick="10" [value]="gaugeValue" [label]="gaugeLabel" [append]="gaugeAppendText" cap="round"></ngx-gauge>
-        <h2> Morena <small> $250,000,000 </small> </h2>
+        <ngx-gauge [foregroundColor]="colorPAN" [value]="gaugeValuePAN" type="arch" min="0" max="1000" thick="10" label="MXN" append="mdp" cap="round"></ngx-gauge>
+        <h2> MORENA <small> {{ costoMORENA | currency }} MXN </small> </h2>
         <hr>
-        <ngx-gauge [foregroundColor]="color" [type]="gaugeType" min="0" max="1000" thick="10" [value]="gaugeValue" [label]="gaugeLabel" [append]="gaugeAppendText" cap="round"></ngx-gauge>
+        <ngx-gauge [foregroundColor]="colorMORENA" [value]="gaugeValueMORENA" type="arch" min="0" max="1000" thick="10" label="MXN" append="mdp" cap="round"></ngx-gauge>
     </div>
 </div>

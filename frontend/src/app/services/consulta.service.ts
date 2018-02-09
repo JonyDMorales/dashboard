@@ -19,7 +19,7 @@ export class ConsultaService {
     public getConteoEventos(alianza, persona, categoria) {
         const uri = this.url + '/eventos/conteoeventos';
         return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
-            return res;
+            return res['eventos'];
         });
     }
 
