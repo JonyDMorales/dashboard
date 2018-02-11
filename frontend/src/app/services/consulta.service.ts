@@ -26,7 +26,7 @@ export class ConsultaService {
     public getGastoEventos(alianza, persona, categoria) {
         const uri = this.url + '/eventos/gastoeventos';
         return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
-            return res;
+            return res['eventos'];
         });
     }
 

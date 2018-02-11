@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
         this.getGastoTotalTierra();
         this.getEventosTotales();
         this.getcategoriaTierra();
+        this.getEstados();
     }
 
     ngOnInit() { }
@@ -132,5 +133,22 @@ export class HomeComponent implements OnInit {
                 });
             });
         });
+    }
+
+    public getEstados(){
+        this._consultaService.getConteoEventos('PRI-PVEM-PANAL', '', '').subscribe(res =>{
+            var arr = this.sortJSON(res);
+            console.log(arr[0][0]);
+        });
+    }
+
+    public sortJSON(json) {
+        var array=[];
+        for(const a in json){
+            array.push([a,json[a]])
+        }
+        //console.log(array);
+        array.sort(function(a,b){return a[1] - b[1]});
+        return array.reverse();
     }
 }

@@ -1,5 +1,5 @@
-<div class="row" style="position: absolute;">
-    <div class="tacometro">
+<div class="position-fixed tacometro">
+    <div>
         <h2> PRI <small> {{ costoPRI | currency }} MXN </small> </h2>
         <hr>
         <ngx-gauge [foregroundColor]="colorPRI" [value]="gaugeValuePRI" type="arch" min="0" max="1000" thick="10" label="MXN" append="mdp" cap="round"></ngx-gauge>
