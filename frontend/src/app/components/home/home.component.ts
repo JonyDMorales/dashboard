@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GraphicsService } from '../../services/graphics.service';
-import { Chart } from 'chart.js';
 import { ConsultaService } from '../../services/consulta.service';
-import 'rxjs/add/operator/map';
-import { forEach } from '@angular/router/src/utils/collection';
-import { element } from 'protractor';
+
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -12,6 +9,9 @@ import { element } from 'protractor';
 })
 export class HomeComponent implements OnInit {
 
+    busquedaPRI = 'PRI-PVEM-PANAL';
+    busquedaPAN = 'PAN-PRD-MC';
+    busquedaMORENA = 'MORENA-PT-PES';
     eventos = [];
     tierra = [];
     conteoEventos = [];
@@ -22,26 +22,21 @@ export class HomeComponent implements OnInit {
         this.getGastoTotalTierra();
         this.getEventosTotales();
         this.getcategoriaTierra();
-        this.getEstados();
     }
 
     ngOnInit() { }
 
     public getGastoTotalEventos() {
-        this._consultaService.getGastoTotalEventos('PRI-PVEM-PANAL', '', '').subscribe(PRI => {
-            this._consultaService.getGastoTotalEventos('PAN-PRD-MC', '', '').subscribe(PAN => {
-                this._consultaService.getGastoTotalEventos('MORENA-PT-PES', '', '').subscribe(MORENA => {
+        this._consultaService.getGastoTotalEventos(this.busquedaPRI, '', '').subscribe(PRI => {
+            this._consultaService.getGastoTotalEventos(this.busquedaPAN, '', '').subscribe(PAN => {
+                this._consultaService.getGastoTotalEventos(this.busquedaMORENA, '', '').subscribe(MORENA => {
                     const estructura = {
                         datasets: [{
                             data: [ PRI, PAN, MORENA ],
                             backgroundColor: [ '#008f36', '#063383', '#b3282b' ],
                             label: ''
                         }],
-                        labels: [
-                            'PRI',
-                            'PAN',
-                            'MORENA'
-                        ]
+                        labels: [ 'PRI', 'PAN', 'MORENA' ]
                     };
                     this.eventos = this._graphicsService.graphicDonut('eventos', estructura, 'Gasto total de eventos por alianza');
                 });
@@ -50,20 +45,16 @@ export class HomeComponent implements OnInit {
     }
 
     public getGastoTotalTierra() {
-        this._consultaService.getGastoTotalTierra('PRI-PVEM-PANAL', '', '').subscribe(PRI => {
-            this._consultaService.getGastoTotalTierra('PAN-PRD-MC', '', '').subscribe(PAN => {
-                this._consultaService.getGastoTotalTierra('MORENA-PT-PES', '', '').subscribe(MORENA => {
+        this._consultaService.getGastoTotalTierra(this.busquedaPRI, '', '').subscribe(PRI => {
+            this._consultaService.getGastoTotalTierra(this.busquedaPAN, '', '').subscribe(PAN => {
+                this._consultaService.getGastoTotalTierra(this.busquedaMORENA, '', '').subscribe(MORENA => {
                     const estructura = {
                         datasets: [{
                             data: [ PRI, PAN, MORENA ],
                             backgroundColor: [ '#008f36', '#063383', '#b3282b' ],
                             label: ''
                         }],
-                        labels: [
-                            'PRI',
-                            'PAN',
-                            'MORENA'
-                        ]
+                        labels: [ 'PRI', 'PAN', 'MORENA' ]
                     };
                     this.tierra = this._graphicsService.graphicDonut('tierra', estructura, 'Gasto total de tierra por alianza');
                 });
@@ -75,17 +66,17 @@ export class HomeComponent implements OnInit {
         let cantidadEventosPRI = 0;
         let cantidadEventosPAN = 0;
         let cantidadEventosMORENA = 0;
-        this._consultaService.getConteoEventos('PRI-PVEM-PANAL', '', '').subscribe(PRI => {
+        this._consultaService.getConteoEventos(this.busquedaPRI, '', '').subscribe(PRI => {
             let array = Object.values(PRI);
             array.forEach(valor => {
                 cantidadEventosPRI += valor;
             });
-            this._consultaService.getConteoEventos('PAN-PRD-MC', '', '').subscribe(PAN => {
+            this._consultaService.getConteoEventos(this.busquedaPAN, '', '').subscribe(PAN => {
                 array = Object.values(PAN);
                 array.forEach(valor => {
                     cantidadEventosPAN += valor;
                 });
-                this._consultaService.getConteoEventos('MORENA-PT-PES', '', '').subscribe(MORENA => {
+                this._consultaService.getConteoEventos(this.busquedaMORENA, '', '').subscribe(MORENA => {
                     array = Object.values(MORENA);
                     array.forEach(valor => {
                         cantidadEventosMORENA += valor;
@@ -104,12 +95,12 @@ export class HomeComponent implements OnInit {
     }
 
     public getcategoriaTierra() {
-        this._consultaService.getGastoTotalTierra('PRI-PVEM-PANAL', '', 'Movil').subscribe(movilPRI => {
-            this._consultaService.getGastoTotalTierra('PRI-PVEM-PANAL', '', 'Fija').subscribe(fijaPRI => {
-                this._consultaService.getGastoTotalTierra('PAN-PRD-MC', '', 'Movil').subscribe(movilPAN => {
-                    this._consultaService.getGastoTotalTierra('PAN-PRD-MC', '', 'Fija').subscribe(fijaPAN => {
-                        this._consultaService.getGastoTotalTierra('MORENA-PT-PES', '', 'Movil').subscribe(movilMORENA => {
-                            this._consultaService.getGastoTotalTierra('MORENA-PT-PES', '', 'Fija').subscribe(fijaMORENA => {
+        this._consultaService.getGastoTotalTierra(this.busquedaPRI, '', 'Movil').subscribe(movilPRI => {
+            this._consultaService.getGastoTotalTierra(this.busquedaPRI, '', 'Fija').subscribe(fijaPRI => {
+                this._consultaService.getGastoTotalTierra(this.busquedaPAN, '', 'Movil').subscribe(movilPAN => {
+                    this._consultaService.getGastoTotalTierra(this.busquedaPAN, '', 'Fija').subscribe(fijaPAN => {
+                        this._consultaService.getGastoTotalTierra(this.busquedaMORENA, '', 'Movil').subscribe(movilMORENA => {
+                            this._consultaService.getGastoTotalTierra(this.busquedaMORENA, '', 'Fija').subscribe(fijaMORENA => {
                                 const estructura = {
                                     labels: ['Móvil', 'Fija'],
                                     datasets: [{
@@ -135,20 +126,5 @@ export class HomeComponent implements OnInit {
         });
     }
 
-    public getEstados(){
-        this._consultaService.getConteoEventos('PRI-PVEM-PANAL', '', '').subscribe(res =>{
-            var arr = this.sortJSON(res);
-            console.log(arr[0][0]);
-        });
-    }
 
-    public sortJSON(json) {
-        var array=[];
-        for(const a in json){
-            array.push([a,json[a]])
-        }
-        //console.log(array);
-        array.sort(function(a,b){return a[1] - b[1]});
-        return array.reverse();
-    }
 }

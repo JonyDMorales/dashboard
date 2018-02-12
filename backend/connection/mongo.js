@@ -8,22 +8,23 @@ function consultarEventoFisca(alianza, persona, categoria, callback) {
     var query = '';
 
     if (alianza && persona && categoria) {
-        query = '{"alianza":"' + alianza + '", "quienes":{' + persona + '}, "' + categoria + '" : { "$exists": true } }';
+        query = '{"alianza":"' + alianza + '", "quienes.' + persona + '": true, "' + categoria + '" : { "$exists": true } }';
     } else if (alianza && persona && !categoria) {
-        query = '{"alianza":"' + alianza + '", "quienes":{' + persona + '} }';
+        query = '{"alianza":"' + alianza + '", "quienes.' + persona + '": true }';
     } else if (alianza && !persona && categoria) {
         query = '{"alianza":"' + alianza + '", "' + categoria + '" : { "$exists": true } }';
     } else if (!alianza && persona && categoria) {
-        query = '{ "quienes":{' + persona + '},"' + categoria + '" : { "$exists": true } }';
+        query = '{ "quienes.' + persona + '": true,"' + categoria + '" : { "$exists": true } }';
     } else if (!alianza && !persona && categoria) {
         query = '{"' + categoria + '" : { "$exists": true } }';
     } else if (alianza && !persona && !categoria) {
         query = '{ "alianza":"' + alianza + '" }';
     } else if (!alianza && persona && !categoria) {
-        query = '{ "quienes":{' + persona + '} }';
+        query = '{ "quienes.' + persona + '": true }';
     }
 
     query = JSON.parse(query);
+
 
     MongoClient.connect(url, function(err, client) {
         if (err) { console.error(err); return; }
@@ -41,19 +42,19 @@ function consultarPubfija(alianza, persona, categoria, callback) {
     var query = '';
 
     if (alianza && persona && categoria) {
-        query = '{"alianza":"' + alianza + '", "quienes_aparecen":{' + persona + '}, "categoria":"' + categoria + '" }';
+        query = '{"alianza":"' + alianza + '", "quienes_aparecen.' + persona + '": true, "' + categoria + '" : { "$exists": true } }';
     } else if (alianza && persona && !categoria) {
-        query = '{"alianza":"' + alianza + '", "quienes_aparecen":{' + persona + '} }';
+        query = '{"alianza":"' + alianza + '", "quienes_aparecen.' + persona + '": true }';
     } else if (alianza && !persona && categoria) {
-        query = '{"alianza":"' + alianza + '", "categoria": "' + categoria + '" }';
+        query = '{"alianza":"' + alianza + '", "' + categoria + '" : { "$exists": true } }';
     } else if (!alianza && persona && categoria) {
-        query = '{ "quienes_aparecen":{' + persona + '}, "categoria:" "' + categoria + '" }';
+        query = '{ "quienes_aparecen.' + persona + '": true,"' + categoria + '" : { "$exists": true } }';
     } else if (!alianza && !persona && categoria) {
         query = '{"' + categoria + '" : { "$exists": true } }';
     } else if (alianza && !persona && !categoria) {
         query = '{ "alianza":"' + alianza + '" }';
     } else if (!alianza && persona && !categoria) {
-        query = '{ "quienes_aparecen":{' + persona + '} }';
+        query = '{ "quienes_aparecen.' + persona + '": true }';
     }
 
     query = JSON.parse(query);
