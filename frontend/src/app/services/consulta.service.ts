@@ -46,7 +46,7 @@ export class ConsultaService {
     public getGastoCategoriaTierra(alianza, persona, categoria) {
         const uri = this.url + '/tierra/gastocategoria';
         return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
-            return res;
+            return res['eventos'];
         });
     }
 

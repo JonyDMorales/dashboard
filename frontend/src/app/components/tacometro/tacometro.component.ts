@@ -11,7 +11,7 @@ export class TacometroComponent implements OnInit {
     busquedaPRI = 'PRI-PVEM-PANAL';
     busquedaPAN = 'PAN-PRD-MC';
     busquedaMORENA = 'MORENA-PT-PES';
-    soloPresidente = '"presidente": true, "senador": false, "diputadoFed": false, "gobernador": false, "alcalde": false';
+    soloPresidente = 'presidente';
     valorPermitido = 429633325;
     valorMax = this.valorPermitido + (this.valorPermitido * 0.05);
 

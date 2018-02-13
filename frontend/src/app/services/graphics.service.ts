@@ -82,4 +82,20 @@ export class GraphicsService {
         });
     }
 
+    public graphicRadar(id, estructura, titulo) {
+        return new Chart(id, {
+            type: 'polarArea',
+            data: estructura,
+            options: {
+                responsive: true,
+                legend: { display: false },
+                title: {
+                    fontSize: 20,
+                    display: true,
+                    text: titulo
+              }
+            }
+        });
+    }
+
 }

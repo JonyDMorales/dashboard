@@ -1,3 +1,5 @@
+<script src="http://www.chartjs.org/dist/2.7.1/Chart.bundle.js"></script>
+<script src="http://www.chartjs.org/samples/latest/utils.js"></script>
 <div class="row animated fadeIn text-center">
     <div class="col-md-3">
         <app-tacometro></app-tacometro>
@@ -6,12 +8,14 @@
         <h2> Eventos </h2>
         <hr>
         <canvas id="eventosGastoCandidatos"> {{ eventosGastoCandidatos }} </canvas>
-        <canvas id="eventosEstado" class="espacio"> {{ eventosEstado }} </canvas>
         <canvas id="eventosGastoEstado" class="espacio"> {{ eventosGastoEstado }} </canvas>
+        <canvas id="eventosEstado" class="espacio"> {{ eventosEstado }} </canvas>
+        <canvas id="eventosGastoCategoria" class="espacio"> {{ eventosGastoCategoria }} </canvas>
     </div>
     <div class="col-md-4">
         <h2> Tierra </h2>
         <hr>
         <canvas id="tierraGastoCandidatos"> {{ tierraGastoCandidatos }} </canvas>
+        <canvas id="tierraGastoEstado" class="espacio"> {{ tierraGastoEstado }} </canvas>
     </div>
 </div>

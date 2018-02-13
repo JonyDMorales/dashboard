@@ -42,15 +42,15 @@ function consultarPubfija(alianza, persona, categoria, callback) {
     var query = '';
 
     if (alianza && persona && categoria) {
-        query = '{"alianza":"' + alianza + '", "quienes_aparecen.' + persona + '": true, "' + categoria + '" : { "$exists": true } }';
+        query = '{"alianza":"' + alianza + '", "quienes_aparecen.' + persona + '": true,  "categoria": "' + categoria + '" }';
     } else if (alianza && persona && !categoria) {
         query = '{"alianza":"' + alianza + '", "quienes_aparecen.' + persona + '": true }';
     } else if (alianza && !persona && categoria) {
-        query = '{"alianza":"' + alianza + '", "' + categoria + '" : { "$exists": true } }';
+        query = '{"alianza":"' + alianza + '", "categoria": "' + categoria + '" }';
     } else if (!alianza && persona && categoria) {
-        query = '{ "quienes_aparecen.' + persona + '": true,"' + categoria + '" : { "$exists": true } }';
+        query = '{ "quienes_aparecen.' + persona + '": true, "categoria": "' + categoria + '" }';
     } else if (!alianza && !persona && categoria) {
-        query = '{"' + categoria + '" : { "$exists": true } }';
+        query = '{ "categoria": "' + categoria + '" }';
     } else if (alianza && !persona && !categoria) {
         query = '{ "alianza":"' + alianza + '" }';
     } else if (!alianza && persona && !categoria) {
