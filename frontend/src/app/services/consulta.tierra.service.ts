@@ -9,9 +9,9 @@ export class ConsultaTierraService {
 
     constructor( private _http: HttpClient) { }
 
-    public getGastoTotalTierra(alianza, persona, categoria) {
+    public getGastoTotalTierra(alianza, persona, categoria,subcategoria) {
         const uri = this.url + '/tierra/gastototal';
-        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map( res => {
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria, 'subcategoria': subcategoria } ).map( res => {
             return res['total']; });
     }
 

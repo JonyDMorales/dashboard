@@ -27,6 +27,8 @@ export class PriComponent implements OnInit {
     eventosGastoSubcategoriaProduccion = [];
     tierraGastoCandidatos = [];
     tierraGastoEstado = [];
+    tierraGastoSubcategoriaFija = [];
+    tierraGastoSubcategoriaMovil = [];
 
 
     constructor(public _graphicsService: GraphicsService,
@@ -43,6 +45,8 @@ export class PriComponent implements OnInit {
         this.getEventosGastoSubcategoriaProduccion();
         this.getGastoTotalTierraCandidato();
         this.getTierraGastoEstado();
+        this.getTierraGastoSubcategoriaFija();
+        this.getTierraGastoSubcategoriaMovil();
     }
 
     ngOnInit() {}
@@ -56,7 +60,7 @@ export class PriComponent implements OnInit {
                             const estructura = {
                                 datasets: [{
                                     data: [ presidente, senador, diputado, gobernador, alcalde ],
-                                    backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a' ],
+                                    backgroundColor: [ '#80008f36', '#00063383', '#33e60000', '#008f36', '#5c5c8a' ],
                                     label: ''
                                 }],
                                 labels: [ 'Presidente', 'Senador', 'Diputado', 'Gobernador', 'Alcalde' ]
@@ -256,11 +260,11 @@ export class PriComponent implements OnInit {
     /*************** Aqui empieza Tierra, Eventos no pasar ***************/
 
     public  getGastoTotalTierraCandidato() {
-        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, '').subscribe(presidente => {
-            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoSenador, '').subscribe(senador => {
-                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoDiputado, '').subscribe(diputado => {
-                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoGobernador, '').subscribe(gobernador => {
-                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoAlcalde, '').subscribe(alcalde => {
+        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, '', '').subscribe(presidente => {
+            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoSenador, '', '').subscribe(senador => {
+                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoDiputado, '', '').subscribe(diputado => {
+                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoGobernador, '', '').subscribe(gobernador => {
+                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoAlcalde, '','').subscribe(alcalde => {
                             const estructura = {
                                 datasets: [{
                                     data: [ presidente, senador, diputado, gobernador, alcalde ],
@@ -292,6 +296,91 @@ export class PriComponent implements OnInit {
         });
     }
 
+    public getTierraGastoSubcategoriaFija(){
+        const categoria = 'Fija';
+        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Espectaculares').subscribe(Espectaculares => {
+            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Bardas').subscribe(Bardas => {
+                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Lonas').subscribe(Lonas => {
+                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Puentes').subscribe(Puentes => {
+                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Pendones').subscribe(Pendones => {
+                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Kioscos').subscribe(Kioscos => {
+                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Carteles').subscribe(Carteles => {
+                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Parabuses').subscribe(Parabuses => {
+                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Mobiliario/EspacioPublico').subscribe(Mobiliario => {
+                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Volantes y Pegatinas').subscribe(Volantes => {
+                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Valla Impresa').subscribe(VallaI => {
+                                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Valla Digital').subscribe(VallaD => {
+                                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Pantallas Fijas').subscribe(Pantallas => {
+                                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Propaganda en Columnas').subscribe(Propaganda => {
+                                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Buzones').subscribe(Buzones => {
+                                                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Cajas de Luz').subscribe(Cajas => {
+                                                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Marquesinas').subscribe(Marquesinas => {
+                                                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Muebles Urbanos').subscribe(Muebles => {
+                                                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Espectaculares de Pantallas Digitales').subscribe(EspectacularesP => {
+                                                                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Mantas (Igual o Mayor a 12 MTS)').subscribe(Mantas12 => {
+                                                                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Mantas (Menores a 12 MTS)').subscribe(MantasM12 => {
+                                                                                            const estruct = {
+                                                                                                datasets: [{
+                                                                                                data: [ Espectaculares, Bardas, Lonas, Puentes, Pendones, Kioscos, Carteles, Parabuses, Mobiliario, Volantes, VallaI, VallaD, Pantallas, Propaganda, Buzones, Cajas, Marquesinas, Muebles, EspectacularesP, Mantas12, MantasM12  ],
+                                                                                                backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#008f36', '#008f36', '#008f36', '#008f36', '#CC000000' ],
+                                                                                                label: ''
+                                                                                                }],
+                                                                                                labels: [ 'Espectaculares', 'Bardas', 'Lonas', 'Puentes', 'Pendones', 'Kioscos', 'Carteles', 'Parabuses', 'Mobiliario', 'Volantes', 'VallaI', 'VallaD', 'Pantallas', 'Propaganda', 'Buzones', 'Cajas', 'Marquesinas', 'Muebles', 'EspectacularesP', 'Mantas12', 'MantasM12'  ]
+                                                                                            };
+                                                                                            this.tierraGastoSubcategoriaFija = this._graphicsService.graphicRadar('tierraGastoSubcategoriaFija', estruct, 'Gasto de fija');
+                                                                                        });
+                                                                                    });
+                                                                                });
+                                                                            });
+                                                                        });
+                                                                    });
+                                                                });
+                                                            });
+                                                        });
+                                                    });
+                                                });
+                                            });
+                                        });
+                                    });  
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    }
+
+    public getTierraGastoSubcategoriaMovil(){
+        const categoria = 'movil';
+        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Transporte Público(combis, micros, camiones)').subscribe(Transporte => {
+            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Vehículos Publicidad(pantallas o lonas)').subscribe(Vehiculos => {
+                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Particulares').subscribe(Particulares => {
+                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Taxis').subscribe(Taxis => {
+                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Metro (dentro de vagones)').subscribe(Metro => {
+                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Brigadas (repartes utilitarios, en cruceros pueden abrir lonas)').subscribe(Brigadas => {
+                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Bicicletas/Bicitaxis/Mototaxis').subscribe(Bicicletas => {
+                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Perifoneo').subscribe(Perifoneo => {
+                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Pantallas Móviles').subscribe(Pantallas => {
+                                            const estruct = {
+                                                datasets: [{
+                                                data: [ Transporte, Vehiculos, Particulares, Taxis, Metro, Brigadas, Bicicletas, Perifoneo, Pantallas ],
+                                                backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000' ],
+                                                label: ''
+                                                }],
+                                                labels: [ 'Transporte Público(combis, micros, camiones)', 'Vehículos Publicidad(pantallas o lonas)', 'Particulares', 'Taxis', 'Metro (dentro de vagones)', 'Brigadas (repartes utilitarios, en cruceros pueden abrir lonas)', 'Bicicletas/Bicitaxis/Mototaxis', 'Perifoneo', 'Pantallas Móviles' ]
+                                            };
+                                            this.tierraGastoSubcategoriaMovil = this._graphicsService.graphicRadar('tierraGastoSubcategoriaMovil', estruct, 'Gasto de Movil');
+                                        });
+                                    });
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    }
 
     public sortJSON(json) {
         const array = [];

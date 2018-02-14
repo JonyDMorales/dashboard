@@ -83,9 +83,9 @@ export class HomeComponent implements OnInit {
     /*************** A partir de aqui es Tierra, Eventos no pasar ***************/
 
     public getGastoTotalTierra() {
-        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', '').subscribe(PRI => {
-            this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', '').subscribe(PAN => {
-                this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', '').subscribe(MORENA => {
+        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', '','').subscribe(PRI => {
+            this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', '', '').subscribe(PAN => {
+                this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', '', '').subscribe(MORENA => {
                     const estructura = {
                         datasets: [{
                             data: [ PRI, PAN, MORENA ],
@@ -101,12 +101,12 @@ export class HomeComponent implements OnInit {
     }
 
     public getcategoriaTierra() {
-        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', 'Movil').subscribe(movilPRI => {
-            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', 'Fija').subscribe(fijaPRI => {
-                this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', 'Movil').subscribe(movilPAN => {
-                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', 'Fija').subscribe(fijaPAN => {
-                        this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', 'Movil').subscribe(movilMORENA => {
-                            this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', 'Fija').subscribe(fijaMORENA => {
+        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', 'Movil', '').subscribe(movilPRI => {
+            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', 'Fija', '').subscribe(fijaPRI => {
+                this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', 'Movil', '').subscribe(movilPAN => {
+                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', 'Fija', '').subscribe(fijaPAN => {
+                        this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', 'Movil', '').subscribe(movilMORENA => {
+                            this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', 'Fija', '').subscribe(fijaMORENA => {
                                 const estructura = {
                                     labels: ['Móvil', 'Fija'],
                                     datasets: [{
