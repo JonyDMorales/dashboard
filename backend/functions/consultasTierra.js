@@ -4,8 +4,9 @@ function consulta(req, res) {
     var alianza = req.body['alianza'];
     var persona = req.body['persona'];
     var categoria = req.body['categoria'];
+    var subcategoria = req.body['subcategoria'];
 
-    interfisca.consultarPubfija(alianza, persona, categoria, function(docs) {
+    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, function(docs) {
         if (docs)
             res.send(docs);
         else
@@ -17,10 +18,10 @@ function gastoTotal(req, res) {
     var alianza = req.body['alianza'];
     var persona = req.body['persona'];
     var categoria = req.body['categoria'];
-
+    var subcategoria = req.body['subcategoria'];
     var total = 0;
 
-    interfisca.consultarPubfija(alianza, persona, categoria, function(docs) {
+    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, function(docs) {
         if (!docs) {
             res.send('');
         }
@@ -37,7 +38,7 @@ function gastoCategoria(req, res) {
     var alianza = req.body['alianza'];
     var persona = req.body['persona'];
     var categoria = req.body['categoria'];
-
+    var subcategoria = req.body['subcategoria'];
     var eventos = {
         'AGUASCALIENTES': 0,
         'BAJA CALIFORNIA': 0,
@@ -73,7 +74,7 @@ function gastoCategoria(req, res) {
         'ZACATECAS': 0
     };
 
-    interfisca.consultarPubfija(alianza, persona, categoria, function(docs) {
+    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, function(docs) {
         if (!docs) {
             res.send('');
         }
