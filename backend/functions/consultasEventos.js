@@ -34,6 +34,30 @@ function gastoTotal(req, res) {
     });
 }
 
+function gastoSubcategoria(req, res) {
+    var alianza = req.body['alianza'];
+    var persona = req.body['persona'];
+    var categoria = req.body['categoria'];
+    var subcategoria = req.body['subcategoria'];
+    var total = 0;
+
+    interfisca.consultarEventoFisca(alianza, persona, categoria, subcategoria, function(docs) {
+        if (!docs) {
+            res.send('');
+        }
+
+        for (var objetos of docs) {
+            for (var array of objetos[categoria]) {
+                if (array.subcategoria === subcategoria) {
+                    if (array.precio)
+                        total += array.precio;
+                }
+            }
+        }
+        res.send({ total: total });
+    });
+}
+
 function conteoEventos(req, res) {
     var alianza = req.body['alianza'];
     var persona = req.body['persona'];
@@ -148,5 +172,6 @@ module.exports = {
     consulta,
     gastoTotal,
     conteoEventos,
-    gastoEventos
+    gastoEventos,
+    gastoSubcategoria
 };

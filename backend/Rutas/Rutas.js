@@ -6,6 +6,7 @@ var Eventos = require('../functions/consultasEventos');
 var Tierra = require('../functions/consultasTierra');
 
 api.post('/eventos/gastototal', Eventos.gastoTotal);
+api.post('/eventos/gastoSubcategoria', Eventos.gastoSubcategoria);
 api.post('/eventos/conteoeventos', Eventos.conteoEventos);
 api.post('/eventos/gastoeventos', Eventos.gastoEventos);
 api.post('/eventos/consulta', Eventos.consulta);
