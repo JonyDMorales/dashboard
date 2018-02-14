@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConsultaService } from '../../services/consulta.service';
+import { ConsultaEventosService } from '../../services/consulta.eventos.service';
+import { ConsultaTierraService } from '../../services/consulta.tierra.service';
 
 @Component({
     selector: 'app-tacometro',
@@ -27,7 +28,7 @@ export class TacometroComponent implements OnInit {
     costoMORENA = 0;
     colorMORENA = '';
 
-    constructor(public _consultaService: ConsultaService) {
+    constructor(public _consultaEventosService: ConsultaEventosService, public _consultaTierraService: ConsultaTierraService) {
         this.getTotalPRI();
         this.getTotalPAN();
         this.getTotalMORENA();
@@ -36,8 +37,8 @@ export class TacometroComponent implements OnInit {
     ngOnInit() {}
 
     public getTotalPRI() {
-        this._consultaService.getGastoTotalEventos(this.busquedaPRI, this.soloPresidente, '').subscribe(eventosPRI => {
-            this._consultaService.getGastoTotalTierra(this.busquedaPRI, this.soloPresidente, '').subscribe(tierraPRI => {
+        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.soloPresidente, '').subscribe(eventosPRI => {
+            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.soloPresidente, '').subscribe(tierraPRI => {
                 this.costoPRI = eventosPRI + tierraPRI;
                 this.gaugeValuePRI = this.costoPRI / 1000000;
                 if (this.costoPRI < this.valorPermitido) {
@@ -52,8 +53,8 @@ export class TacometroComponent implements OnInit {
     }
 
     public getTotalPAN() {
-        this._consultaService.getGastoTotalEventos(this.busquedaPAN, this.soloPresidente, '').subscribe(eventosPAN => {
-            this._consultaService.getGastoTotalTierra(this.busquedaPAN, this.soloPresidente, '').subscribe(tierraPAN => {
+        this._consultaEventosService.getGastoTotalEventos(this.busquedaPAN, this.soloPresidente, '').subscribe(eventosPAN => {
+            this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, this.soloPresidente, '').subscribe(tierraPAN => {
                 this.costoPAN = eventosPAN + tierraPAN;
                 this.gaugeValuePAN = this.costoPAN / 1000000;
                 if (this.costoPAN < this.valorPermitido) {
@@ -68,8 +69,8 @@ export class TacometroComponent implements OnInit {
     }
 
     public getTotalMORENA() {
-        this._consultaService.getGastoTotalEventos(this.busquedaMORENA, this.soloPresidente, '').subscribe(eventosMORENA => {
-            this._consultaService.getGastoTotalTierra(this.busquedaMORENA, this.soloPresidente, '').subscribe(tierraMORENA => {
+        this._consultaEventosService.getGastoTotalEventos(this.busquedaMORENA, this.soloPresidente, '').subscribe(eventosMORENA => {
+            this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, this.soloPresidente, '').subscribe(tierraMORENA => {
                 this.costoMORENA = eventosMORENA + tierraMORENA;
                 this.gaugeValueMORENA = this.costoMORENA / 1000000;
                 if (this.costoMORENA < this.valorPermitido) {

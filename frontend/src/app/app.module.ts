@@ -6,7 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { NgxGaugeModule } from 'ngx-gauge';
 
-import { ConsultaService } from './services/consulta.service';
+import { ConsultaEventosService } from './services/consulta.eventos.service';
+import { ConsultaTierraService } from './services/consulta.tierra.service';
 import { GraphicsService } from './services/graphics.service';
 
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { PanComponent } from './components/pan/pan.component';
 import { MorenaComponent } from './components/morena/morena.component';
 
 import { APP_ROUTING } from './app.routes';
+
 
 @NgModule({
     declarations: [
@@ -38,7 +40,7 @@ import { APP_ROUTING } from './app.routes';
         NgxGaugeModule,
         APP_ROUTING
     ],
-    providers: [ ConsultaService, GraphicsService ],
+    providers: [ ConsultaEventosService, ConsultaTierraService, GraphicsService ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

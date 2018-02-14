@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConsultaService } from '../../services/consulta.service';
+import { GraphicsService } from '../../services/graphics.service';
 
 @Component({
     selector: 'app-pan',
@@ -8,13 +8,12 @@ import { ConsultaService } from '../../services/consulta.service';
 })
 export class PanComponent implements OnInit {
 
-    public eventos;
-    public tierra;
 
-    constructor(public _consultaService: ConsultaService) {
-  }
+    constructor(public _graphicsService: GraphicsService) {
 
-  ngOnInit() {
-  }
+    }
+
+    ngOnInit() {}
 
 }
+

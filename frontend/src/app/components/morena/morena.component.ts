@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConsultaService } from '../../services/consulta.service';
+
 
 @Component({
     selector: 'app-morena',
@@ -10,7 +10,7 @@ export class MorenaComponent implements OnInit {
     public eventos;
     public tierra;
 
-    constructor(public _consultaService: ConsultaService) {
+    constructor() {
      }
 
     ngOnInit() {}
