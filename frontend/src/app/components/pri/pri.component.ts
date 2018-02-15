@@ -60,7 +60,7 @@ export class PriComponent implements OnInit {
                             const estructura = {
                                 datasets: [{
                                     data: [ presidente, senador, diputado, gobernador, alcalde ],
-                                    backgroundColor: [ '#80008f36', '#00063383', '#33e60000', '#008f36', '#5c5c8a' ],
+                                    backgroundColor: [ '#2588e4', '#FC5936', '#FC5936', '#FFFC5936', '#00FC5936' ],
                                     label: ''
                                 }],
                                 labels: [ 'Presidente', 'Senador', 'Diputado', 'Gobernador', 'Alcalde' ]
@@ -322,7 +322,7 @@ export class PriComponent implements OnInit {
                                                                                             const estruct = {
                                                                                                 datasets: [{
                                                                                                 data: [ Espectaculares, Bardas, Lonas, Puentes, Pendones, Kioscos, Carteles, Parabuses, Mobiliario, Volantes, VallaI, VallaD, Pantallas, Propaganda, Buzones, Cajas, Marquesinas, Muebles, EspectacularesP, Mantas12, MantasM12  ],
-                                                                                                backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#008f36', '#008f36', '#008f36', '#008f36', '#CC000000' ],
+                                                                                                backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#008f36', '#008f36', '#008f36', '#008f36', 'rgba(37, 136, 228, 0.18)' ],
                                                                                                 label: ''
                                                                                                 }],
                                                                                                 labels: [ 'Espectaculares', 'Bardas', 'Lonas', 'Puentes', 'Pendones', 'Kioscos', 'Carteles', 'Parabuses', 'Mobiliario', 'Volantes', 'VallaI', 'VallaD', 'Pantallas', 'Propaganda', 'Buzones', 'Cajas', 'Marquesinas', 'Muebles', 'EspectacularesP', 'Mantas12', 'MantasM12'  ]
