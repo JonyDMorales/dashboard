@@ -28,4 +28,11 @@ export class ConsultaTierraService {
             return res;
         });
     }
+
+    public getConteoEstado(alianza, persona, categoria){
+        const uri = this.url + '/tierra/conteotierra';
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
+            return res['tierra'];
+        });
+    }
 }

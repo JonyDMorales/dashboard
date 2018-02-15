@@ -13,6 +13,7 @@ api.post('/eventos/consulta', Eventos.consulta);
 
 api.post('/tierra/gastototal', Tierra.gastoTotal);
 api.post('/tierra/gastocategoria', Tierra.gastoCategoria);
+api.post('/tierra/conteotierra', Tierra.conteoEstados);
 api.post('/tierra/consulta', Tierra.consulta);
 
 var app = express();
