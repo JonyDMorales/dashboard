@@ -137,12 +137,12 @@ export class PriComponent implements OnInit {
     }
 
     public getEventosGastoCategoria() {
-        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', 'estructura').subscribe(estructura => {
-            this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', 'animacion').subscribe(animacion => {
-                this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', 'transporte').subscribe(transporte => {
-                    this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', 'produccion').subscribe(produccion => {
-                        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', 'espectacular').subscribe(espectacular => {
-                            this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', 'utilitario').subscribe(utilitario => {
+        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoPresidente, 'estructura').subscribe(estructura => {
+            this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoPresidente, 'animacion').subscribe(animacion => {
+                this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoPresidente, 'transporte').subscribe(transporte => {
+                    this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoPresidente, 'produccion').subscribe(produccion => {
+                        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoPresidente, 'espectacular').subscribe(espectacular => {
+                            this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoPresidente, 'utilitario').subscribe(utilitario => {
                                 const estruct = {
                                     datasets: [{
                                         data: [ estructura, animacion, transporte, produccion, espectacular, utilitario ],
@@ -163,7 +163,7 @@ export class PriComponent implements OnInit {
     public getEventosGastoSubcategoriaEstructura() {
         const subcategoria = 'estructura';
         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'arañas').subscribe(arañas => {
-            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'baños publicos').subscribe(baños => {
+            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'baños públicos').subscribe(baños => {
                 this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'carpas').subscribe(carpas => {
                     this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'escenario').subscribe(escenario => {
                         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'gradas').subscribe(gradas => {
@@ -199,7 +199,7 @@ export class PriComponent implements OnInit {
 
     public getEventosGastoSubcategoriaAnimacion() {
         const subcategoria = 'animacion';
-        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'animador / maestro de ceremonias').subscribe(animador => {
+        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'animador/maestro de ceremonias').subscribe(animador => {
             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'artistas').subscribe(artistas => {
                 this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'edecanes').subscribe(edecanes => {
                     this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'grupos musicales / djs').subscribe(grupos => {
@@ -222,7 +222,7 @@ export class PriComponent implements OnInit {
 
     public getEventosGastoSubcategoriaTransporte() {
         const subcategoria = 'transporte';
-        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'automoviles').subscribe(automoviles => {
+        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'automóviles').subscribe(automoviles => {
             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'camiones').subscribe(camiones => {
                 this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'camionetas').subscribe(camionetas => {
                     this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'combi/microbus').subscribe(combimicrobus => {
@@ -245,23 +245,23 @@ export class PriComponent implements OnInit {
         });
     }
 
-    public getEventosGastoSubcategoriaProduccion() {
+    public getEventosGastoSubcategoriaProduccion() { 
         const subcategoria = 'produccion';
         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'computadoras').subscribe(computadoras => {
             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'consola de audio').subscribe(consoladeaudio => {
-                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'camaras de video').subscribe(camarasdevideo => {
+                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'cámaras de video').subscribe(camarasdevideo => {
                     this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'dron').subscribe(dron => {
                         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'equipo de audio').subscribe(equipodeaudio => {
-                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this. candidatoPresidente, subcategoria, 'gruas de camara').subscribe(gruasdecamara => {
+                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this. candidatoPresidente, subcategoria, 'gruas de cámara').subscribe(gruasdecamara => {
                                 this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'luces').subscribe(luces => {
-                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'mermas de produccion').subscribe(mermasdeproduccion => {
-                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'microfonos').subscribe(microfonos =>{
+                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'mermas de producción').subscribe(mermasdeproduccion => {
+                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'micrófonos').subscribe(microfonos =>{
                                             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'otros').subscribe(otros => {
                                                 this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'pantallas').subscribe(pantallas => {
                                                     this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'personal de seguridad').subscribe(personaldeseguridad => {
                                                         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'plantas de luz').subscribe(plantasdeluz=> {
                                                             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'proyectores').subscribe(proyectores => {
-                                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'servicio medico').subscribe(serviciomedico => {
+                                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'servicio médico').subscribe(serviciomedico => {
                                                                     this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'video walls').subscribe(videowalls => {
                                                                         const estruct = {
                                                                             datasets: [{
@@ -292,21 +292,21 @@ export class PriComponent implements OnInit {
 
     public getEventosGastoSubcategoriaEspectacular(){
         const categoria = 'espectacular';
-        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'buzones/cajas de luz').subscribe(buzonescajasdeluz => {
-            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'carteleras').subscribe(carteleras => {
-                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'columnas').subscribe(columnas => {
-                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'inflables-promocionales').subscribe(inflablespromocionales => {
-                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'lonas').subscribe(lonas => {
-                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'marquesinas').subscribe(marquesinas => {
-                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'muebles urbanos').subscribe(mueblesurbanos => {
-                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'muros').subscribe(muros => {
-                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'otros').subscribe(otros => {
-                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'panoramicos').subscribe(panoramicos => {
-                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'parabuses').subscribe(parabuses => {
-                                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'pendones').subscribe(pendones => {
-                                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'puentes').subscribe(puentes => {
-                                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'vallas').subscribe(vallas => {
-                                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'vehiculo de transporte').subscribe(vehiculodetransporte => {
+        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'buzones/cajas de luz').subscribe(buzonescajasdeluz => {
+            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'carteleras').subscribe(carteleras => {
+                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'columnas').subscribe(columnas => {
+                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'inflables-promocionales').subscribe(inflablespromocionales => {
+                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'lonas').subscribe(lonas => {
+                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'marquesinas').subscribe(marquesinas => {
+                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'muebles urbanos').subscribe(mueblesurbanos => {
+                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'muros').subscribe(muros => {
+                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'otros').subscribe(otros => {
+                                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'panorámicos').subscribe(panoramicos => {
+                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'parabuses').subscribe(parabuses => {
+                                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'pendones').subscribe(pendones => {
+                                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'puentes').subscribe(puentes => {
+                                                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'vallas').subscribe(vallas => {
+                                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'vehículo de transporte').subscribe(vehiculodetransporte => {
                                                                     const estruct = {
                                                                         datasets: [{
                                                                         data: [ buzonescajasdeluz, carteleras, columnas, inflablespromocionales, lonas, marquesinas, mueblesurbanos, muros, otros, panoramicos, parabuses, pendones, puentes, vallas, vehiculodetransporte ],
@@ -335,40 +335,40 @@ export class PriComponent implements OnInit {
 
     public getEventosGastoSubcategoriaUtilitario(){
         const categoria = 'utilitario';
-        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'abanicos').subscribe(abanicos => {
-            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'aguas').subscribe(aguas => {
-                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'banderas').subscribe(banderas => {
-                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'banderines').subscribe(banderines => {
-                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'banderolas').subscribe(banderolas => {
-                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'bolsas').subscribe(bolsas => {
-                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'botones').subscribe(botones => {
-                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'camisas').subscribe(camisas => {
-                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'chaleco').subscribe(chaleco => {
-                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'chamarras').subscribe(chamarras => {
-                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'cobija').subscribe(cobija => {
-                                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'gallardetes').subscribe(gallardetes => {
-                                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'gorras').subscribe(gorras => {
-                                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'impermeable').subscribe(impermeable => {
-                                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'lonches').subscribe(lonches => {
-                                                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'mandiles').subscribe(mandiles => {
-                                                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'mangas').subscribe(mangas => {
-                                                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'mantas (igual o mayor a 12 mts)').subscribe(mantasigualomayora12mts => {
-                                                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'mantas (menores a 12 mts').subscribe(mantasmenoresa12mts => {
-                                                                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'microperforadores').subscribe(microperforadores => {
-                                                                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'mochilas').subscribe(mochilas => {
-                                                                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'otros').subscribe(otros => {
-                                                                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'paliacates').subscribe(paliacates => {
-                                                                                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'playeras').subscribe(playeras => {
-                                                                                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'pulseras').subscribe(pulseras => {
-                                                                                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'refrescos').subscribe(refrescos => {
-                                                                                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'sombrillas').subscribe(sombrillas => {
-                                                                                                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'stikers').subscribe(stikers => {
-                                                                                                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'sudadera').subscribe(sudadera => {
-                                                                                                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'tortilleros').subscribe(tortilleros => {
-                                                                                                                                this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'tripticos').subscribe(tripticos => {
-                                                                                                                                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'vasos').subscribe(vasos => {
-                                                                                                                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'vinilonas').subscribe(vinilonas => {
-                                                                                                                                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'volantes').subscribe(volantes => {
+        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'abanicos').subscribe(abanicos => {
+            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'aguas').subscribe(aguas => {
+                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'banderas').subscribe(banderas => {
+                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'banderines').subscribe(banderines => {
+                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'banderolas').subscribe(banderolas => {
+                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'bolsas').subscribe(bolsas => {
+                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'botones').subscribe(botones => {
+                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'camisas').subscribe(camisas => {
+                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'chaleco').subscribe(chaleco => {
+                                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'chamarras').subscribe(chamarras => {
+                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'cobija').subscribe(cobija => {
+                                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'gallardetes').subscribe(gallardetes => {
+                                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'gorras').subscribe(gorras => {
+                                                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'impermeable').subscribe(impermeable =>     {
+                                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'lonches').subscribe(lonches => {
+                                                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mandiles').subscribe(mandiles => {
+                                                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mangas').subscribe(mangas => {
+                                                                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mantas (igual o mayor a 12 mts)').subscribe(mantasigualomayora12mts => {
+                                                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mantas (menores a 12 mts').subscribe(mantasmenoresa12mts => {
+                                                                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'microperforadores').subscribe(microperforadores => {
+                                                                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mochilas').subscribe(mochilas => {
+                                                                                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'otros').subscribe(otros => {
+                                                                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'paliacates').subscribe(paliacates => {
+                                                                                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'playeras').subscribe(playeras => {
+                                                                                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'pulseras').subscribe(pulseras => {
+                                                                                                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'refrescos').subscribe(refrescos => {
+                                                                                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'sombrillas').subscribe(sombrillas => {
+                                                                                                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'stikers').subscribe(stikers => {
+                                                                                                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'sudadera').subscribe(sudadera => {
+                                                                                                                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'tortilleros').subscribe(tortilleros => {
+                                                                                                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'tripticos').subscribe(tripticos => {
+                                                                                                                                    this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'vasos').subscribe(vasos => {
+                                                                                                                                        this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'vinilonas').subscribe(vinilonas => {
+                                                                                                                                            this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'volantes').subscribe(volantes => {
                                                                                                                                                 const estruct = {
                                                                                                                                                     datasets: [{
                                                                                                                                                     data: [ abanicos, aguas, banderas, banderines, banderolas, bolsas, botones, camisas, chaleco, chamarras, cobija, gallardetes, gorras, impermeable, lonches, mandiles, mangas, mantasigualomayora12mts, mantasmenoresa12mts, microperforadores, mochilas, otros, paliacates, playeras, pulseras, refrescos, sombrillas, stikers, sudadera, tortilleros, tripticos, vasos, vinilonas, volantes ],

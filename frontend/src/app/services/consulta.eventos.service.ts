@@ -16,8 +16,8 @@ export class ConsultaEventosService {
     }
 
     public getGastoSubcategoria(alianza, persona, categoria, subcategoria) {
-        const uri = this.url + '/eventos/gastoSubcategoria';
-        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map( res => {
+        const uri = this.url + '/eventos/gastosubcategoria';
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria, 'subcategoria': subcategoria } ).map( res => {
             return res['total']; });
     }
 
