@@ -1,0 +1,13 @@
+<div class="position-fixed tacometro">
+    <div>
+        <h2> PRI <small> {{ costoPRI | currency }} MXN </small> </h2>
+        <hr>
+        <ngx-gauge [foregroundColor]="colorPRI" [value]="gaugeValuePRI" type="arch" min="0" max="1000" thick="10" label="MXN" append="mdp" cap="round"></ngx-gauge>
+        <h2> PAN <small> {{ costoPAN | currency }} MXN </small> </h2>
+        <hr>
+        <ngx-gauge [foregroundColor]="colorPAN" [value]="gaugeValuePAN" type="arch" min="0" max="1000" thick="10" label="MXN" append="mdp" cap="round"></ngx-gauge>
+        <h2> MORENA <small> {{ costoMORENA | currency }} MXN </small> </h2>
+        <hr>
+        <ngx-gauge [foregroundColor]="colorMORENA" [value]="gaugeValueMORENA" type="arch" min="0" max="1000" thick="10" label="MXN" append="mdp" cap="round"></ngx-gauge>
+    </div>
+</div>
