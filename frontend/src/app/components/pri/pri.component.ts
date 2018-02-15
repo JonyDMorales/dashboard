@@ -93,7 +93,11 @@ export class PriComponent implements OnInit {
                             const estructura = {
                                 datasets: [{
                                     data: [ presidente, senador, diputado, gobernador, alcalde ],
+<<<<<<< HEAD
                                     backgroundColor: [ this.color0 +' , 1)', this.color2 + ', 1)',  this.color4 + ', 1)', this.color6 + ', 1)', this.color8 + ', 1)' ],
+=======
+                                    backgroundColor: [ '#2588e4', '#FC5936', '#FC5936', '#FFFC5936', '#00FC5936' ],
+>>>>>>> 7b1efc2cd481a062a835f533bcdc5dd19503d0d9
                                     label: ''
                                 }],
                                 labels: [ 'Presidente', 'Senador', 'Diputado', 'Gobernador', 'Alcalde' ]
@@ -510,7 +514,7 @@ export class PriComponent implements OnInit {
                                                                                             const estruct = {
                                                                                                 datasets: [{
                                                                                                 data: [ Espectaculares, Bardas, Lonas, Puentes, Pendones, Kioscos, Carteles, Parabuses, Mobiliario, Volantes, VallaI, VallaD, Pantallas, Propaganda, Buzones, Cajas, Marquesinas, Muebles, EspectacularesP, Mantas12, MantasM12  ],
-                                                                                                backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#008f36', '#008f36', '#008f36', '#008f36', '#CC000000' ],
+                                                                                                backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#008f36', '#008f36', '#008f36', '#008f36', 'rgba(37, 136, 228, 0.18)' ],
                                                                                                 label: ''
                                                                                                 }],
                                                                                                 labels: [ 'Espectaculares', 'Bardas', 'Lonas', 'Puentes', 'Pendones', 'Kioscos', 'Carteles', 'Parabuses', 'Mobiliario', 'Volantes', 'VallaI', 'VallaD', 'Pantallas', 'Propaganda', 'Buzones', 'Cajas', 'Marquesinas', 'Muebles', 'EspectacularesP', 'Mantas12', 'MantasM12'  ]
