@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
                     const estructura = {
                         datasets: [{
                             data: [ PRI, PAN, MORENA ],
-                            backgroundColor: [ '#008f36', '#063383', '#b3282b' ],
+                            backgroundColor: [ 'rgba(0, 143, 54, 0.65)', 'rgba(6, 51, 131, 0.65)', 'rgba(179, 40, 43, 0.65)' ],
                             label: ''
                         }],
                         labels: [ 'PRI', 'PAN', 'MORENA' ]
@@ -70,7 +70,7 @@ export class HomeComponent implements OnInit {
                     const estructura = {
                         labels: [ 'PRI', 'PAN', 'MORENA' ],
                         datasets: [{
-                            backgroundColor: [ '#008f36', '#063383', '#b3282b' ],
+                            backgroundColor: [ 'rgba(0, 143, 54, 0.65)', 'rgba(6, 51, 131, 0.65)', 'rgba(179, 40, 43, 0.65)' ],
                             data: [ cantidadEventosPRI, cantidadEventosPAN, cantidadEventosMORENA, 0 ]
                         }]
                     };
@@ -89,7 +89,7 @@ export class HomeComponent implements OnInit {
                     const estructura = {
                         datasets: [{
                             data: [ PRI, PAN, MORENA ],
-                            backgroundColor: [ '#008f36', '#063383', '#b3282b' ],
+                            backgroundColor: [ 'rgba(0, 143, 54, 0.65)', 'rgba(6, 51, 131, 0.65)', 'rgba(179, 40, 43, 0.65)' ],
                             label: ''
                         }],
                         labels: [ 'PRI', 'PAN', 'MORENA' ]
@@ -111,15 +111,15 @@ export class HomeComponent implements OnInit {
                                     labels: ['Móvil', 'Fija'],
                                     datasets: [{
                                         label: 'PRI',
-                                        backgroundColor: '#008f36',
+                                        backgroundColor: 'rgba(0, 143, 54, 0.65)',
                                         data: [movilPRI, fijaPRI]
                                     }, {
                                         label: 'PAN',
-                                        backgroundColor: '#063383',
+                                        backgroundColor: 'rgba(6, 51, 131, 0.65)',
                                         data: [movilPAN, fijaPAN]
                                     }, {
                                         label: 'MORENA',
-                                        backgroundColor: '#b3282b',
+                                        backgroundColor: 'rgba(179, 40, 43, 0.65)',
                                         data: [ movilMORENA, fijaMORENA]
                                     }]
                                 };

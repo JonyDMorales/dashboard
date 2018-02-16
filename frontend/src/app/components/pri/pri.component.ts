@@ -33,32 +33,33 @@ export class PriComponent implements OnInit {
     tierraGastoCategoria = [];
     tierraGastoSubcategoriaFija = [];
     tierraGastoSubcategoriaMovil = [];
-    color0 = 'rgba(255, 173, 173';
-    color1 = 'rgba(255, 194, 173';
-    color2 = 'rgba(255, 214, 173';
-    color3 = 'rgba(255, 235, 173';
-    color4 = 'rgba(255, 255, 173';
-    color5 = 'rgba(235, 255, 173';
-    color6 = 'rgba(214, 255, 173';
-	color7 = 'rgba(194, 255, 173';
-	color8 = 'rgba(173, 255, 173';
-	color9 = 'rgba(173, 255, 194';
-	color10 = 'rgba(173, 255, 214';
-	color11 = 'rgba(173, 255, 235';
-	color12 = 'rgba(173, 255, 255';
-	color13 = 'rgba(173, 235, 255';
-	color14 = 'rgba(173, 214, 255';
-	color15 = 'rgba(173, 194, 255';
-	color16 = 'rgba(173, 173, 255';
-	color17 = 'rgba(194, 173, 255';
-	color18 = 'rgba(214, 173, 255';
-	color19 = 'rgba(217, 171, 255';
-	color20 = 'rgba(235, 173, 255';
-	color21 = 'rgba(255, 173, 255';
-	color22 = 'rgba(255, 173, 235';
-	color23 = 'rgba(255, 173, 214';
-	color24 = 'rgba(255, 173, 194';
-    color25 = 'rgba(255, 173, 173';
+
+    color0 = 'rgba(167, 37, 37';
+    color1 = 'rgba(167, 69, 37';
+    color2 = 'rgba(167, 102, 37';
+    color3 = 'rgba(167, 135, 37';
+    color4 = 'rgba(167, 167, 37';
+    color5 = 'rgba(135, 167, 37';
+    color6 = 'rgba(102, 167, 37';
+    color7 = 'rgba(69, 167, 37';
+    color8 = 'rgba(37, 167, 37';
+    color9 = 'rgba(37, 167, 69';
+    color10 = 'rgba(37, 167, 102';
+    color11 = 'rgba(37, 167, 135';	
+    color12 = 'rgba(37, 167, 167';	
+    color13 = 'rgba(37, 135, 167';
+    color14 = 'rgba(36, 116, 166';
+    color15 = 'rgba(37, 102, 167';
+    color16 = 'rgba(37, 69, 167';
+    color17 = 'rgba(37, 37, 167';
+    color18 = 'rgba(69, 37, 167';
+    color19 = 'rgba(102, 37, 167';	
+    color20 = 'rgba(135, 37, 167';	
+    color21 = 'rgba(167, 37, 167';	
+    color22 = 'rgba(167, 37, 135';	
+    color23 = 'rgba(167, 37, 102';	
+    color24 = 'rgba(167, 37, 69';
+    color25 = 'rgba(167, 37, 37';
 
     constructor(public _graphicsService: GraphicsService,
                 public _consultaEventosService: ConsultaEventosService,
@@ -84,16 +85,16 @@ export class PriComponent implements OnInit {
 
     ngOnInit() {}
 
-    public getEventosGastoTotalCandidato() {
+    public getEventosGastoTotalCandidato(){
         this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoPresidente, '').subscribe(presidente => {
             this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoSenador, '').subscribe(senador => {
                 this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoDiputado, '').subscribe(diputado => {
                     this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoGobernador, '').subscribe(gobernador => {
                         this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoAlcalde, '').subscribe(alcalde => {
-                            const estructura = {
+                            let estructura = {
                                 datasets: [{
                                     data: [ presidente, senador, diputado, gobernador, alcalde ],
-                                    backgroundColor: [ this.color0 +' , 1)', this.color2 + ', 1)',  this.color4 + ', 1)', this.color6 + ', 1)', this.color8 + ', 1)' ],
+                                    backgroundColor: [ this.color0 +' , 0.60)', this.color2 + ', 0.60)',  this.color4 + ', 0.60)', this.color6 + ', 0.60)', this.color8 + ', 0.60)' ],
                                     label: ''
                                 }],
                                 labels: [ 'Presidente', 'Senador', 'Diputado', 'Gobernador', 'Alcalde' ]
@@ -106,13 +107,13 @@ export class PriComponent implements OnInit {
         });
     }
 
-    public getEventosEstadosGasto() {
+    public getEventosEstadosGasto(){
         this._consultaEventosService.getGastoEventos(this.busquedaPRI, this.candidatoPresidente, '').subscribe(res => {
             const arr = this.sortJSON(res);
             const estructura = {
                 datasets: [{
                     data: [ arr[0][1], arr[1][1], arr[2][1], arr[3][1], arr[4][1] ],
-                    backgroundColor: [ this.color10 +' , 1)', this.color12 + ', 1)',  this.color14 + ', 1)', this.color16 + ', 1)', this.color18 + ', 1)' ],
+                    backgroundColor: [ this.color10 +' , 0.60)', this.color12 + ', 0.60)',  this.color14 + ', 0.60)', this.color16 + ', 0.60)', this.color18 + ', 0.60)' ],
                     label: ''
                 }],
                 labels: [ arr[0][0], arr[1][0], arr[2][0], arr[3][0], arr[4][0] ]
@@ -121,13 +122,13 @@ export class PriComponent implements OnInit {
         });
     }
 
-    public getEventosEstados() {
+    public getEventosEstados(){
         this._consultaEventosService.getConteoEventos(this.busquedaPRI, this.candidatoPresidente, '').subscribe(res => {
             const arr = this.sortJSON(res);
             const estructura = {
                 datasets: [{
                     data: [ arr[0][1], arr[1][1], arr[2][1], arr[3][1], arr[4][1] ],
-                    backgroundColor: [ this.color1 +' , 1)', this.color3 + ', 1)',  this.color5 + ', 1)', this.color7 + ', 1)', this.color9 + ', 1)' ],
+                    backgroundColor: [ this.color1 +' , 0.60)', this.color3 + ', 0.60)',  this.color5 + ', 0.60)', this.color7 + ', 0.60)', this.color9 + ', 0.60)' ],
                     label: ''
                 }],
                 labels: [ arr[0][0], arr[1][0], arr[2][0], arr[3][0], arr[4][0] ]
@@ -136,7 +137,8 @@ export class PriComponent implements OnInit {
         });
     }
 
-    public getEventosGastoCategoria() {
+    public getEventosGastoCategoria(){
+        console.log(this.getEventosGastoSubcategoriaEstructura());
         this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoPresidente, 'estructura').subscribe(estructura => {
             this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoPresidente, 'animacion').subscribe(animacion => {
                 this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.candidatoPresidente, 'transporte').subscribe(transporte => {
@@ -146,10 +148,10 @@ export class PriComponent implements OnInit {
                                 const estruct = {
                                     datasets: [{
                                         data: [ estructura, animacion, transporte, produccion, espectacular, utilitario ],
-                                        backgroundColor: [ this.color11 +' , 1)', this.color13 + ', 1)',  this.color15 + ', 1)', this.color17 + ', 1)', this.color19 + ', 1)', this.color21 + ', 1)' ],
+                                        backgroundColor: [ this.color11 +' , 0.60)', this.color13 + ', 0.60)',  this.color15 + ', 0.60)', this.color17 + ', 0.60)', this.color19 + ', 0.60)', this.color21 + ', 0.60)' ],
                                         label: ''
                                     }],
-                                    labels: [ 'Estructura', 'Animacion', 'Transporte', 'Produccion', 'Espectacular', 'Utilitario' ]
+                                    labels: [ 'Estructura', 'Animación', 'Transporte', 'Producción', 'Espectacular', 'Utilitario' ]
                                 };
                                 this.eventosGastoCategoria = this._graphicsService.graphicBar('eventosGastoCategoria', estruct, 'Gasto total de eventos por categoria');
                             });
@@ -160,7 +162,7 @@ export class PriComponent implements OnInit {
         });
     }
 
-    public getEventosGastoSubcategoriaEstructura() {
+    public getEventosGastoSubcategoriaEstructura(){
         const subcategoria = 'estructura';
         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'arañas').subscribe(arañas => {
             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'baños públicos').subscribe(baños => {
@@ -177,12 +179,13 @@ export class PriComponent implements OnInit {
                                                         const estruct = {
                                                             datasets: [{
                                                                 data: [ arañas, baños, carpas, escenario, gradas, mampara, mesas, otros, sillas, sillones, templete, vallas ],
-                                                                backgroundColor: [ this.color20 +' , 1)', this.color22 + ', 1)',  this.color0 + ', 1)', this.color4 + ', 1)', this.color8 + ', 1)', this.color12 + ', 1)', this.color14+' , 1)', this.color18 + ', 1)',  this.color1 + ', 1)', this.color5 + ', 1)', this.color9 + ', 1)', this.color11 + ', 1)' ],
+                                                                backgroundColor: [ this.color0 +' , 0.40)', this.color1 + ', 0.40)',  this.color2 + ', 0.40)', this.color3 + ',0.40)', this.color4 + ',0.40)', this.color5 + ', 0.5)', this.color6+' , 0.5)', this.color7 + ', 0.5)',  this.color8 + ', 0.5)', this.color9 + ', 0.5)', this.color10 + ', 0.5)', this.color11 + ', 0.5)' ],
                                                                 label: ''
                                                             }],
-                                                            labels: [ 'Arañas', 'baños', 'carpas', 'escenario', 'gradas', 'mampara', 'mesas', 'otros', 'sillas', 'sillones', 'templete', 'vallas' ]
+                                                            labels: [ 'Arañas', 'Baños Públicos', 'Carpas', 'Escenario', 'Gradas', 'Mampara', 'Mesas', 'Otros', 'Sillas', 'Sillones', 'Templete', 'Vallas' ]
                                                         };
                                                         this.eventosGastoSubcategoriaEstructura = this._graphicsService.graphicRadar('eventosGastoSubcategoriaEstructura', estruct, 'Gasto de estructura');
+                                                        return arañas + baños + carpas + escenario + gradas + mampara + mesas + otros + sillas + sillones + templete + vallas;
                                                     });
                                                 });
                                             });
@@ -197,7 +200,7 @@ export class PriComponent implements OnInit {
         });
     }
 
-    public getEventosGastoSubcategoriaAnimacion() {
+    public getEventosGastoSubcategoriaAnimacion(){
         const subcategoria = 'animacion';
         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'animador/maestro de ceremonias').subscribe(animador => {
             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'artistas').subscribe(artistas => {
@@ -207,10 +210,10 @@ export class PriComponent implements OnInit {
                             const estruct = {
                                 datasets: [{
                                     data: [ animador, artistas, edecanes, grupos, otros ],
-                                    backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000'],
+                                    backgroundColor: [ this.color12 +' , 0.40)', this.color13 + ', 0.40)',  this.color14 + ', 0.40)', this.color15 + ',0.40)', this.color16 + ',0.40)', this.color17 + ', 0.40)' ],
                                     label: ''
                                 }],
-                                labels: [ 'animador', 'artistas', 'edecanes', 'grupos', 'otros' ]
+                                labels: [ 'Animador/Maestro de Ceremonias', 'Artistas', 'Edecanes', 'Grupos Musicales/Djs', 'Otros' ]
                             };
                             this.eventosGastoSubcategoriaAnimacion = this._graphicsService.graphicRadar('eventosGastoSubcategoriaAnimacion', estruct, 'Gasto de animacion');
                         });
@@ -220,7 +223,7 @@ export class PriComponent implements OnInit {
         });
     }
 
-    public getEventosGastoSubcategoriaTransporte() {
+    public getEventosGastoSubcategoriaTransporte(){
         const subcategoria = 'transporte';
         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'automóviles').subscribe(automoviles => {
             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'camiones').subscribe(camiones => {
@@ -231,10 +234,10 @@ export class PriComponent implements OnInit {
                                 const estruct = {
                                     datasets: [{
                                         data: [ automoviles, camiones, camionetas, combimicrobus, otros, taxi ],
-                                        backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000'],
+                                        backgroundColor: [ this.color18 +' , 0.40)', this.color19 + ', 0.40)',  this.color20 + ', 0.40)', this.color21 + ',0.40)', this.color22 + ',0.40)', this.color23 + ', 0.40)' ],
                                         label: ''
                                     }],
-                                    labels: [ 'automoviles', 'camiones', 'camionetas', 'combimicrobus', 'otros', 'taxi' ]
+                                    labels: [ 'Automóviles', 'Camiones', 'Camionetas', 'Combi/Microbus', 'Otros', 'Taxi' ]
                                 };
                                 this.eventosGastoSubcategoriaTransporte = this._graphicsService.graphicRadar('eventosGastoSubcategoriaTransporte', estruct, 'Gasto de transporte');
                             });
@@ -245,7 +248,7 @@ export class PriComponent implements OnInit {
         });
     }
 
-    public getEventosGastoSubcategoriaProduccion() { 
+    public getEventosGastoSubcategoriaProduccion(){ 
         const subcategoria = 'produccion';
         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'computadoras').subscribe(computadoras => {
             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, subcategoria, 'consola de audio').subscribe(consoladeaudio => {
@@ -266,10 +269,10 @@ export class PriComponent implements OnInit {
                                                                         const estruct = {
                                                                             datasets: [{
                                                                             data: [ computadoras, consoladeaudio, camarasdevideo, dron, equipodeaudio, gruasdecamara, luces, mermasdeproduccion, microfonos, otros, pantallas, personaldeseguridad, plantasdeluz, proyectores, serviciomedico, videowalls ],
-                                                                            backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36'],
+                                                                            backgroundColor: [ this.color0 +' , 0.40)', this.color1 + ', 0.40)',  this.color2 + ', 0.40)', this.color3 + ',0.40)', this.color4 + ',0.40)', this.color5 + ', 0.40)',this.color6 +' , 0.40)', this.color7 + ', 0.40)',  this.color8 + ', 0.40)', this.color9 + ',0.40)', this.color10 + ',0.40)', this.color11 + ', 0.40)', this.color12 +' , 0.40)', this.color13 + ', 0.40)',  this.color14 + ', 0.40)', this.color15 + ',0.40)' ],
                                                                             label: ''
                                                                             }],
-                                                                            labels: [ 'computadoras', 'consoladeaudio', 'camarasdevideo', 'dron', 'equipodeaudio', 'gruasdecamara', 'luces', 'mermasdeproduccion', 'microfonos', 'otros', 'pantallas', 'personaldeseguridad', 'plantasdeluz', 'proyectores', 'serviciomedico', 'videowalls' ]
+                                                                            labels: [ 'Computadoras', 'Consola de Audio', 'Cámaras de Video', 'Dron', 'Equipo de Audio', 'Gruas de cámara', 'Luces', 'Mermas de Producción', 'Micrófonos', 'Otros', 'Pantallas', 'Personal de Seguridad', 'Plantas de Luz', 'Proyectores', 'Servicio Medico', 'Video Walls' ]
                                                                         };
                                                                         this.eventosGastoSubcategoriaProduccion = this._graphicsService.graphicRadar('eventosGastoSubcategoriaProduccion', estruct, 'Gasto de produccion');
                                                                     });
@@ -310,10 +313,10 @@ export class PriComponent implements OnInit {
                                                                     const estruct = {
                                                                         datasets: [{
                                                                         data: [ buzonescajasdeluz, carteleras, columnas, inflablespromocionales, lonas, marquesinas, mueblesurbanos, muros, otros, panoramicos, parabuses, pendones, puentes, vallas, vehiculodetransporte ],
-                                                                        backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000' ],
+                                                                        backgroundColor: [ this.color16 +' , 0.40)', this.color17 + ', 0.40)',  this.color18 + ', 0.40)', this.color19 + ',0.40)', this.color20 + ',0.40)', this.color21 + ', 0.40)',this.color22 +' , 0.40)', this.color23 + ', 0.40)',  this.color24 + ', 0.40)', this.color25 + ',0.40)', this.color0 + ',0.40)', this.color1 + ', 0.40)', this.color2 +' , 0.40)', this.color3 + ', 0.40)',  this.color4 + ', 0.40)' ],
                                                                         label: ''
                                                                         }],
-                                                                        labels: [ 'buzonescajasdeluz', 'carteleras', 'columnas', 'inflablespromocionales', 'lonas', 'marquesinas', 'mueblesurbanos', 'muros', 'otros', 'panoramicos', 'parabuses', 'pendones', 'puentes', 'vallas', 'vehiculodetransporte' ]
+                                                                        labels: [ 'Buzones/Cajas de Luz', 'Carteleras', 'Columnas', 'Inflables Promocionales', 'Lonas', 'Marquesinas', 'Muebles Urbanos', 'Muros', 'Otros', 'Panorámicos', 'Parabuses', 'Pendones', 'Puentes', 'Vallas', 'Vehículo de Transporte' ]
                                                                     };
                                                                     this.eventosGastoSubcategoriaEspectacular = this._graphicsService.graphicRadar('eventosGastoSubcategoriaEspectacular', estruct, 'Gasto de espectaculares');
                                                                 });
@@ -353,7 +356,7 @@ export class PriComponent implements OnInit {
                                                                     this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mandiles').subscribe(mandiles => {
                                                                         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mangas').subscribe(mangas => {
                                                                             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mantas (igual o mayor a 12 mts)').subscribe(mantasigualomayora12mts => {
-                                                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mantas (menores a 12 mts').subscribe(mantasmenoresa12mts => {
+                                                                                this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mantas (menores a 12 mts)').subscribe(mantasmenoresa12mts => {
                                                                                     this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'microperforadores').subscribe(microperforadores => {
                                                                                         this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'mochilas').subscribe(mochilas => {
                                                                                             this._consultaEventosService.getGastoSubcategoria(this.busquedaPRI, this.candidatoPresidente, categoria, 'otros').subscribe(otros => {
@@ -372,10 +375,10 @@ export class PriComponent implements OnInit {
                                                                                                                                                 const estruct = {
                                                                                                                                                     datasets: [{
                                                                                                                                                     data: [ abanicos, aguas, banderas, banderines, banderolas, bolsas, botones, camisas, chaleco, chamarras, cobija, gallardetes, gorras, impermeable, lonches, mandiles, mangas, mantasigualomayora12mts, mantasmenoresa12mts, microperforadores, mochilas, otros, paliacates, playeras, pulseras, refrescos, sombrillas, stikers, sudadera, tortilleros, tripticos, vasos, vinilonas, volantes ],
-                                                                                                                                                    backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#008f36', '#008f36', '#008f36', '#008f36', '#CC000000','#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#063383', '#e60000', '#008f36'  ],
+                                                                                                                                                    backgroundColor: [ this.color0 +' , 0.40)', this.color1 + ', 0.40)',  this.color2 + ', 0.40)', this.color3 + ',0.40)', this.color4 + ',0.40)', this.color5 + ', 0.40)',this.color6 +' , 0.40)', this.color7 + ', 0.40)',  this.color8 + ', 0.40)', this.color9 + ',0.40)', this.color10 + ',0.40)', this.color11 + ', 0.40)', this.color12 +' , 0.40)', this.color13 + ', 0.40)',  this.color14 + ', 0.40)', this.color15 +' , 0.40)', this.color16 +' , 0.40)', this.color17 + ', 0.40)',  this.color18 + ', 0.40)', this.color19 + ',0.40)', this.color20 + ',0.40)', this.color21 + ', 0.40)',this.color22 +' , 0.40)', this.color23 + ', 0.40)',  this.color24 + ', 0.40)', this.color25 + ',0.40)', this.color0 + ',0.40)', this.color1 + ', 0.40)', this.color2 +' , 0.40)', this.color3 + ', 0.40)',  this.color4 + ', 0.40)', this.color5 +' , 0.40)', this.color6 +' , 0.40)', this.color7 +' , 0.40)' ],
                                                                                                                                                     label: ''
                                                                                                                                                     }],
-                                                                                                                                                    labels: [ 'abanicos', 'aguas', 'banderas', 'banderines', 'banderolas', 'bolsas', 'botones', 'camisas', 'chaleco', 'chamarras', 'cobija', 'gallardetes', 'gorras', 'impermeable', 'lonches', 'mandiles', 'mangas', 'mantasigualomayora12mts', 'mantasmenoresa12mts', 'microperforadores', 'mochilas', 'otros', 'paliacates', 'playeras', 'pulseras', 'refrescos', 'sombrillas', 'stikers', 'sudadera', 'tortilleros', 'tripticos', 'vasos', 'vinilonas', 'volantes'   ]
+                                                                                                                                                    labels: [ 'Abanicos', 'Aguas', 'Banderas', 'Banderines', 'Banderolas', 'Bolsas', 'Botones', 'Camisas', 'Chaleco', 'Chamarras', 'Cobija', 'Gallardetes', 'Gorras', 'Impermeable', 'Lonches', 'Mandiles', 'Mangas', 'Mantas igual o mayor a 12 MTS', 'Mantas menores a 12 MTS', 'Microperforadores', 'Mochilas', 'Otros', 'Paliacates', 'Playeras', 'Pulseras', 'Refrescos', 'Sombrillas', 'Stikers', 'Sudadera', 'Tortilleros', 'Tripticos', 'Vasos', 'Vinilonas', 'Volantes'   ]
                                                                                                                                                 };
                                                                                                                                                 this.eventosGastoSubcategoriaUtilitario = this._graphicsService.graphicRadar('eventosGastoSubcategoriaUtilitario', estruct, 'Gasto de utilitario');
                                                                                                                                             });
@@ -425,7 +428,7 @@ export class PriComponent implements OnInit {
                             const estructura = {
                                 datasets: [{
                                     data: [ presidente, senador, diputado, gobernador, alcalde ],
-                                    backgroundColor: [ '#e60000', '#063383', '#e60000', '#008f36', '#5c5c8a' ],
+                                    backgroundColor: [ this.color0 +' , 0.6)', this.color2 + ', 0.6)',  this.color4 + ', 0.6)', this.color6 + ', 0.6)', this.color8 + ', 0.6)' ],
                                     label: ''
                                 }],
                                 labels: [ 'Presidente', 'Senador', 'Diputado', 'Gobernador', 'Alcalde' ]
@@ -444,7 +447,7 @@ export class PriComponent implements OnInit {
             const estructura = {
                 datasets: [{
                     data: [ arr[0][1], arr[1][1], arr[2][1], arr[3][1], arr[4][1] ],
-                    backgroundColor: [ '#008f36', '#063383', '#b3282b', '#008f36', '#ffffff' ],
+                    backgroundColor: [ this.color10 +' , 0.6)', this.color12 + ', 0.6)',  this.color14 + ', 0.6)', this.color16 + ', 0.6)', this.color18 + ', 0.6)' ],
                     label: ''
                 }],
                 labels: [ arr[0][0], arr[1][0], arr[2][0], arr[3][0], arr[4][0] ]
@@ -459,7 +462,7 @@ export class PriComponent implements OnInit {
             const estructura = {
                 datasets: [{
                     data: [ arr[0][1], arr[1][1], arr[2][1], arr[3][1], arr[4][1] ],
-                    backgroundColor: [ '#008f36', '#063383', '#b3282b', '#008f36', '#ffffff' ],
+                    backgroundColor: [ this.color1 +' , 0.6)', this.color3 + ', 0.6)',  this.color5 + ', 0.6)', this.color7 + ', 0.6)', this.color9 + ', 0.6)' ],
                     label: ''
                 }],
                 labels: [ arr[0][0], arr[1][0], arr[2][0], arr[3][0], arr[4][0] ]
@@ -475,7 +478,7 @@ export class PriComponent implements OnInit {
                     labels: ['Móvil', 'Fija'],
                     datasets: [{
                         label: 'PRI',
-                        backgroundColor: '#008f36',
+                        backgroundColor: [ this.color11 +' , 0.60)', this.color13 + ', 0.60)' ],
                         data: [movilPRI, fijaPRI]
                     }]
                 };
@@ -510,10 +513,10 @@ export class PriComponent implements OnInit {
                                                                                             const estruct = {
                                                                                                 datasets: [{
                                                                                                 data: [ Espectaculares, Bardas, Lonas, Puentes, Pendones, Kioscos, Carteles, Parabuses, Mobiliario, Volantes, VallaI, VallaD, Pantallas, Propaganda, Buzones, Cajas, Marquesinas, Muebles, EspectacularesP, Mantas12, MantasM12  ],
-                                                                                                backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000', '#008f36', '#008f36', '#008f36', '#008f36', '#008f36', 'rgba(37, 136, 228, 0.18)' ],
+                                                                                                backgroundColor: [ this.color0 +' , 0.40)', this.color1 + ', 0.40)',  this.color2 + ', 0.40)', this.color3 + ',0.40)', this.color4 + ',0.40)', this.color5 + ', 0.40)',this.color6 +' , 0.40)', this.color7 + ', 0.40)',  this.color8 + ', 0.40)', this.color9 + ',0.40)', this.color10 + ',0.40)', this.color11 + ', 0.40)', this.color12 +' , 0.40)', this.color13 + ', 0.40)',  this.color14 + ', 0.40)', this.color15 +' , 0.40)', this.color16 +' , 0.40)', this.color17 + ', 0.40)',  this.color18 + ', 0.40)', this.color19 + ',0.40)', this.color20 + ',0.40)' ],
                                                                                                 label: ''
                                                                                                 }],
-                                                                                                labels: [ 'Espectaculares', 'Bardas', 'Lonas', 'Puentes', 'Pendones', 'Kioscos', 'Carteles', 'Parabuses', 'Mobiliario', 'Volantes', 'VallaI', 'VallaD', 'Pantallas', 'Propaganda', 'Buzones', 'Cajas', 'Marquesinas', 'Muebles', 'EspectacularesP', 'Mantas12', 'MantasM12'  ]
+                                                                                                labels: [ 'Espectaculares', 'Bardas', 'Lonas', 'Puentes', 'Pendones', 'Kioscos', 'Carteles', 'Parabuses', 'Mobiliario/Espacio Publico', 'Volantes y Pegatinas', 'Valla Impresa', 'Valla Digital', 'Pantallas Fijas', 'Propaganda en Columnas', 'Buzones', 'Cajas de Luz', 'Marquesinas', 'Muebles Urbanos', 'Espectaculares de Pantallas Digitales', 'Mantas (Igual o Mayor a 12 MTS)', 'Mantas (Menores a 12 MTS)'  ]
                                                                                             };
                                                                                             this.tierraGastoSubcategoriaFija = this._graphicsService.graphicRadar('tierraGastoSubcategoriaFija', estruct, 'Gasto de fija');
                                                                                         });
@@ -540,20 +543,20 @@ export class PriComponent implements OnInit {
     }
 
     public getTierraGastoSubcategoriaMovil(){
-        const categoria = 'movil';
+        let categoria = 'Movil';
         this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Transporte Público(combis, micros, camiones)').subscribe(Transporte => {
             this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Vehículos Publicidad(pantallas o lonas)').subscribe(Vehiculos => {
                 this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Particulares').subscribe(Particulares => {
                     this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Taxis').subscribe(Taxis => {
                         this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Metro (dentro de vagones)').subscribe(Metro => {
-                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Brigadas (repartes utilitarios, en cruceros pueden abrir lonas)').subscribe(Brigadas => {
+                            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Brigadas (reparten utilitarios,en cruceros pueden abrir lonas)').subscribe(Brigadas => {
                                 this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Bicicletas/Bicitaxis/Mototaxis').subscribe(Bicicletas => {
                                     this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Perifoneo').subscribe(Perifoneo => {
-                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Pantallas Móviles').subscribe(Pantallas => {
+                                        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.candidatoPresidente, categoria, 'Pantallas Moviles').subscribe(Pantallas => {
                                             const estruct = {
                                                 datasets: [{
                                                 data: [ Transporte, Vehiculos, Particulares, Taxis, Metro, Brigadas, Bicicletas, Perifoneo, Pantallas ],
-                                                backgroundColor: [ '#008f36', '#063383', '#e60000', '#008f36', '#5c5c8a', '#e60000', '#008f36', '#063383', '#e60000' ],
+                                                backgroundColor: [ this.color21 +' , 0.40)', this.color22 + ', 0.40)',  this.color23 + ', 0.40)', this.color24 + ',0.40)', this.color25 + ',0.40)', this.color0 + ', 0.40)', this.color1 + ', 0.40)', this.color2 + ', 0.40)', this.color3 + ', 0.40)' ],
                                                 label: ''
                                                 }],
                                                 labels: [ 'Transporte Público(combis, micros, camiones)', 'Vehículos Publicidad(pantallas o lonas)', 'Particulares', 'Taxis', 'Metro (dentro de vagones)', 'Brigadas (repartes utilitarios, en cruceros pueden abrir lonas)', 'Bicicletas/Bicitaxis/Mototaxis', 'Perifoneo', 'Pantallas Móviles' ]
