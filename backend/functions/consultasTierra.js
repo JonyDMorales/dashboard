@@ -1,40 +1,45 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const interfisca = require("../connect/mongo.connect");
-exports.consulta = (req, res) => {
+var interfisca = require("../connection/mongo");
+
+function consulta(req, res) {
     var alianza = req.body['alianza'];
     var persona = req.body['persona'];
     var categoria = req.body['categoria'];
     var subcategoria = req.body['subcategoria'];
-    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, (docs) => {
+
+    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, function(docs) {
         if (docs)
             res.send(docs);
         else
             res.send('');
     });
-};
-exports.gastoTotal = (req, res) => {
+}
+
+function gastoTotal(req, res) {
     var alianza = req.body['alianza'];
     var persona = req.body['persona'];
     var categoria = req.body['categoria'];
     var subcategoria = req.body['subcategoria'];
     var total = 0;
-    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, (docs) => {
+
+    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, function(docs) {
         if (!docs) {
             res.send('');
         }
+
         for (var i of docs) {
             if (i.precio)
                 total += i.precio;
         }
         res.send({ total: total });
     });
-};
-exports.estadosEventos = (req, res) => {
+}
+
+function estadosEventos(req, res) {
     let alianza = req.body['alianza'];
     let persona = req.body['persona'];
     let categoria = req.body['categoria'];
     let subcategoria = req.body['subcategoria'];
+
     let estados = {
         'AGUASCALIENTES': { conteo: 0, gasto: 0 },
         'BAJA CALIFORNIA': { conteo: 0, gasto: 0 },
@@ -69,10 +74,12 @@ exports.estadosEventos = (req, res) => {
         'YUCATÁN': { conteo: 0, gasto: 0 },
         'ZACATECAS': { conteo: 0, gasto: 0 }
     };
-    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, (docs) => {
+
+    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, function(docs) {
         if (!docs) {
             res.send('');
         }
+
         for (let i of docs) {
             if (estados[i.estado]) {
                 let estado = estados[i.estado];
@@ -85,5 +92,9 @@ exports.estadosEventos = (req, res) => {
         }
         res.send({ estados: estados });
     });
+}
+module.exports = {
+    consulta,
+    gastoTotal,
+    estadosEventos
 };
-//# sourceMappingURL=tierra.functions.js.map

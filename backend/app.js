@@ -1,7 +1,7 @@
-import * as app from './rutas/rutas';
+var app = require('./Rutas/Rutas.js');
 
-let port = 9000;
 
+var port = process.env.PORT || 9000;
 app.listen(port, function() {
     console.log('Api REST corriendo en http://localhost:' + port);
 });
