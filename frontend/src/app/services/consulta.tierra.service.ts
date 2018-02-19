@@ -5,33 +5,27 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ConsultaTierraService {
 
-    public url = 'http://dashboard-integra.us-east-1.elasticbeanstalk.com';
+    //public url = 'http://dashboard-integra.us-east-1.elasticbeanstalk.com';
+    public url = 'http://localhost:9000';
 
     constructor( private _http: HttpClient) { }
 
-    public getGastoTotalTierra(alianza, persona, categoria,subcategoria) {
+    public getGastoTotalTierra(alianza, persona, categoria, subcategoria) {
         const uri = this.url + '/tierra/gastototal';
         return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria, 'subcategoria': subcategoria } ).map( res => {
             return res['total']; });
     }
 
-    public getGastoCategoriaTierra(alianza, persona, categoria) {
-        const uri = this.url + '/tierra/gastocategoria';
-        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
-            return res['eventos'];
+    public getEstadosTierra(alianza, persona, categoria, subcategoria) {
+        const uri = this.url + '/tierra/estadostierra';
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria, 'subcategoria': subcategoria } ).map((res) => {
+            return res['estados'];
         });
     }
 
-    public getConsultaTierra(alianza, persona, categoria) {
+    public getConsultaTierra(alianza, persona, categoria, subcategoria){
         const uri = this.url + '/tierra/consulta';
-        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
-            return res;
-        });
-    }
-
-    public getConteoEstado(alianza, persona, categoria){
-        const uri = this.url + '/tierra/conteotierra';
-        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria } ).map((res) => {
+        return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria, 'subcategoria': subcategoria } ).map((res) => {
             return res['tierra'];
         });
     }

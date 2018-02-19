@@ -37,7 +37,7 @@ export class TacometroComponent implements OnInit {
     ngOnInit() {}
 
     public getTotalPRI() {
-        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.soloPresidente, '').subscribe(eventosPRI => {
+        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, this.soloPresidente, '', '').subscribe(eventosPRI => {
             this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, this.soloPresidente, '', '').subscribe(tierraPRI => {
                 this.costoPRI = eventosPRI + tierraPRI;
                 this.gaugeValuePRI = this.costoPRI / 1000000;
@@ -53,7 +53,7 @@ export class TacometroComponent implements OnInit {
     }
 
     public getTotalPAN() {
-        this._consultaEventosService.getGastoTotalEventos(this.busquedaPAN, this.soloPresidente, '').subscribe(eventosPAN => {
+        this._consultaEventosService.getGastoTotalEventos(this.busquedaPAN, this.soloPresidente, '', '').subscribe(eventosPAN => {
             this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, this.soloPresidente, '', '').subscribe(tierraPAN => {
                 this.costoPAN = eventosPAN + tierraPAN;
                 this.gaugeValuePAN = this.costoPAN / 1000000;
@@ -69,7 +69,7 @@ export class TacometroComponent implements OnInit {
     }
 
     public getTotalMORENA() {
-        this._consultaEventosService.getGastoTotalEventos(this.busquedaMORENA, this.soloPresidente, '').subscribe(eventosMORENA => {
+        this._consultaEventosService.getGastoTotalEventos(this.busquedaMORENA, this.soloPresidente, '', '').subscribe(eventosMORENA => {
             this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, this.soloPresidente, '', '').subscribe(tierraMORENA => {
                 this.costoMORENA = eventosMORENA + tierraMORENA;
                 this.gaugeValueMORENA = this.costoMORENA / 1000000;

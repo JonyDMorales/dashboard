@@ -10,13 +10,13 @@ import { ConsultaTierraService } from '../../services/consulta.tierra.service';
 })
 export class HomeComponent implements OnInit {
 
-    busquedaPRI = 'PRI-PVEM-PANAL';
-    busquedaPAN = 'PAN-PRD-MC';
-    busquedaMORENA = 'MORENA-PT-PES';
-    eventos = [];
-    tierra = [];
-    conteoEventos = [];
-    categoriaTierra = [];
+    busquedaPRI:string = 'PRI-PVEM-PANAL';
+    busquedaPAN:string = 'PAN-PRD-MC';
+    busquedaMORENA:string = 'MORENA-PT-PES';
+    eventos:Array<any> = [];
+    tierra:Array<any> = [];
+    conteoEventos:Array<any> = [];
+    categoriaTierra:Array<any> = [];
 
     constructor( public _graphicsService: GraphicsService,
                  public _consultaEventosService: ConsultaEventosService,
@@ -30,11 +30,11 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() { }
 
-    public getGastoTotalEventos() {
-        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', '').subscribe(PRI => {
-            this._consultaEventosService.getGastoTotalEventos(this.busquedaPAN, '', '').subscribe(PAN => {
-                this._consultaEventosService.getGastoTotalEventos(this.busquedaMORENA, '', '').subscribe(MORENA => {
-                    const estructura = {
+    public getGastoTotalEventos(){
+        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', '', '').subscribe(PRI => {
+            this._consultaEventosService.getGastoTotalEventos(this.busquedaPAN, '', '', '').subscribe(PAN => {
+                this._consultaEventosService.getGastoTotalEventos(this.busquedaMORENA, '', '', '').subscribe(MORENA => {
+                    let estructura = {
                         datasets: [{
                             data: [ PRI, PAN, MORENA ],
                             backgroundColor: [ 'rgba(0, 143, 54, 0.65)', 'rgba(6, 51, 131, 0.65)', 'rgba(179, 40, 43, 0.65)' ],
@@ -49,32 +49,37 @@ export class HomeComponent implements OnInit {
     }
 
     public getEventosTotales() {
-        let cantidadEventosPRI = 0;
-        let cantidadEventosPAN = 0;
-        let cantidadEventosMORENA = 0;
-        this._consultaEventosService.getConteoEventos(this.busquedaPRI, '', '').subscribe(PRI => {
-            let array = Object.values(PRI);
-            array.forEach(valor => {
-                cantidadEventosPRI += valor;
-            });
-            this._consultaEventosService.getConteoEventos(this.busquedaPAN, '', '').subscribe(PAN => {
-                array = Object.values(PAN);
-                array.forEach(valor => {
-                    cantidadEventosPAN += valor;
-                });
-                this._consultaEventosService.getConteoEventos(this.busquedaMORENA, '', '').subscribe(MORENA => {
-                    array = Object.values(MORENA);
-                    array.forEach(valor => {
-                        cantidadEventosMORENA += valor;
-                    });
-                    const estructura = {
+        let cantidadEventosPRI:number = 0;
+        let cantidadEventosPAN:number = 0;
+        let cantidadEventosMORENA:number = 0;
+
+        this._consultaEventosService.getEstadosEventos(this.busquedaPRI, '', '', '').subscribe(estadosPRI => {
+            if(estadosPRI){
+                for(let estado in estadosPRI){
+                    cantidadEventosPRI += estadosPRI[estado].conteo;
+                }
+            }
+            this._consultaEventosService.getEstadosEventos(this.busquedaPAN, '', '', '').subscribe(estadosPAN => {
+                if(estadosPAN){
+                    for(let estado in estadosPAN){
+                        cantidadEventosPAN += estadosPAN[estado].conteo;
+                    }
+                }
+                this._consultaEventosService.getEstadosEventos(this.busquedaMORENA, '', '', '').subscribe(estadosMORENA => {
+                    if(estadosMORENA){
+                        for(let estado in estadosMORENA){
+                            cantidadEventosMORENA += estadosMORENA[estado].conteo;
+                        }
+                    }
+                    let estructura = {
                         labels: [ 'PRI', 'PAN', 'MORENA' ],
                         datasets: [{
                             backgroundColor: [ 'rgba(0, 143, 54, 0.65)', 'rgba(6, 51, 131, 0.65)', 'rgba(179, 40, 43, 0.65)' ],
                             data: [ cantidadEventosPRI, cantidadEventosPAN, cantidadEventosMORENA, 0 ]
                         }]
                     };
-        this.conteoEventos = this._graphicsService.graphicHorizontal('conteoEventos', estructura, 'Cantidad de eventos por alianza');
+                    
+                    this.conteoEventos = this._graphicsService.graphicHorizontal('conteoEventos', estructura, 'Cantidad de eventos por alianza');
                 });
             });
         });
@@ -86,7 +91,7 @@ export class HomeComponent implements OnInit {
         this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', '','').subscribe(PRI => {
             this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', '', '').subscribe(PAN => {
                 this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', '', '').subscribe(MORENA => {
-                    const estructura = {
+                    let estructura = {
                         datasets: [{
                             data: [ PRI, PAN, MORENA ],
                             backgroundColor: [ 'rgba(0, 143, 54, 0.65)', 'rgba(6, 51, 131, 0.65)', 'rgba(179, 40, 43, 0.65)' ],
@@ -107,7 +112,7 @@ export class HomeComponent implements OnInit {
                     this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', 'Fija', '').subscribe(fijaPAN => {
                         this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', 'Movil', '').subscribe(movilMORENA => {
                             this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', 'Fija', '').subscribe(fijaMORENA => {
-                                const estructura = {
+                                let estructura = {
                                     labels: ['Móvil', 'Fija'],
                                     datasets: [{
                                         label: 'PRI',
@@ -123,7 +128,7 @@ export class HomeComponent implements OnInit {
                                         data: [ movilMORENA, fijaMORENA]
                                     }]
                                 };
-                this.categoriaTierra = this._graphicsService.graphicBar('categoriaTierra', estructura, 'Gasto de tierra por alianza');
+                                this.categoriaTierra = this._graphicsService.graphicBar('categoriaTierra', estructura, 'Gasto de tierra por alianza');
                             });
                         });
                     });
@@ -132,3 +137,5 @@ export class HomeComponent implements OnInit {
         });
     }
 }
+
+

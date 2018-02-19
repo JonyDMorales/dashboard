@@ -1,0 +1,21 @@
+"use strict";
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const Eventos = require("../functions/eventos.functions");
+const Tierra = require("../functions/tierra.functions");
+let api = express.Router();
+api.post('/eventos/gastototal', Eventos.gastoTotal);
+api.post('/eventos/estadoseventos', Eventos.estadosEventos);
+api.post('/eventos/gastosubcategoria', Eventos.gastoSubcategorias);
+api.post('/eventos/consulta', Eventos.consulta);
+api.post('/tierra/gastototal', Tierra.gastoTotal);
+api.post('/tierra/estadostierra', Tierra.estadosEventos);
+api.post('/tierra/consulta', Tierra.consulta);
+let app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
+app.use('/', api);
+module.exports = app;
+//# sourceMappingURL=rutas.js.map

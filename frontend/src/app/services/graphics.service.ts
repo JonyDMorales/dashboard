@@ -98,4 +98,24 @@ export class GraphicsService {
         });
     }
 
+    public sortCantidad(json):Array<any> {
+        let array = [];
+        for(let a in json){
+            array.push([a,json[a].conteo])
+        }
+
+        array.sort(function(a, b) {return a[1] - b[1]});
+        return array.reverse();
+    }
+
+    public sortGasto(json):Array<any> {
+        let array = [];
+        for(let a in json){
+            array.push([a,json[a].gasto])
+        }
+
+        array.sort(function(a, b) {return a[1] - b[1]});
+        return array.reverse();
+    }
+
 }
