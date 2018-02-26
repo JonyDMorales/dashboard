@@ -43,7 +43,7 @@ function consultarEventoFisca(alianza, persona, categoria, subcategoria, callbac
 
     MongoClient.connect(url, function(err, client) {
         if (err) { console.error(err); return; }
-        interfisca = client.db('interfisca').collection('eventofisca');
+        interfisca = client.db('resulfisca').collection('eventos');
         interfisca.find(query).toArray(function(err, docs) {
             assert.equal(err, null);
             callback(docs);
@@ -92,7 +92,7 @@ function consultarPubfija(alianza, persona, categoria, subcategoria, callback) {
 
     MongoClient.connect(url, function(err, client) {
         if (err) { console.error(err); return; }
-        interfisca = client.db('interfisca').collection('pubfija');
+        interfisca = client.db('resulfisca').collection('pubfija');
         interfisca.find(query).toArray(function(err, docs) {
             assert.equal(err, null);
             callback(docs);

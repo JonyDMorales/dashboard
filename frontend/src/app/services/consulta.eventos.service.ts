@@ -5,8 +5,8 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ConsultaEventosService {
 
-    //public url = 'http://dashboard-integra.us-east-1.elasticbeanstalk.com';
-    public url = 'http://localhost:9000';
+    public url = 'http://dashboard-integra.us-east-1.elasticbeanstalk.com';
+    //public url = 'http://localhost:9000';
 
     constructor(private _http: HttpClient) { }
 
