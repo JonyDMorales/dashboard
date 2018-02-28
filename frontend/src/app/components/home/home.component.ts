@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
                 this._consultaEventosService.getGastoTotalEventos(this.busquedaMORENA, '', '', '').subscribe(MORENA => {
                     let estructura = {
                         datasets: [{
-                            data: [ PRI, PAN, MORENA ],
+                            data: [ PRI, PAN, MORENA, 0 ],
                             backgroundColor: [ 'rgba(0, 143, 54, 0.65)', 'rgba(6, 51, 131, 0.65)', 'rgba(179, 40, 43, 0.65)' ],
                             label: ''
                         }],
@@ -117,15 +117,15 @@ export class HomeComponent implements OnInit {
                                     datasets: [{
                                         label: 'PRI',
                                         backgroundColor: 'rgba(0, 143, 54, 0.65)',
-                                        data: [movilPRI, fijaPRI]
+                                        data: [ movilPRI, fijaPRI, 0]
                                     }, {
                                         label: 'PAN',
                                         backgroundColor: 'rgba(6, 51, 131, 0.65)',
-                                        data: [movilPAN, fijaPAN]
+                                        data: [movilPAN, fijaPAN, 0]
                                     }, {
                                         label: 'MORENA',
                                         backgroundColor: 'rgba(179, 40, 43, 0.65)',
-                                        data: [ movilMORENA, fijaMORENA]
+                                        data: [ movilMORENA, fijaMORENA, 0]
                                     }]
                                 };
                                 this.categoriaTierra = this._graphicsService.graphicBar('categoriaTierra', estructura, 'Gasto de tierra por alianza');

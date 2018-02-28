@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ConsultaEventosService {
 
-    public url = 'http://dashboard-integra.us-east-1.elasticbeanstalk.com';
+    public url = 'http://dashboardfinal.us-east-1.elasticbeanstalk.com';
     //public url = 'http://localhost:9000';
 
     constructor(private _http: HttpClient) { }
 
     public getGastoTotalEventos(alianza, persona, categoria, subcategoria) {
         let uri = this.url + '/eventos/gastototal';
-        let header = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         return this._http.post(uri, { 'alianza': alianza, 'persona': persona, 'categoria': categoria, 'subcategoria': subcategoria } ).map( res => {
             return res['total']; });
     }

@@ -9,6 +9,8 @@ import { NgxGaugeModule } from 'ngx-gauge';
 import { ConsultaEventosService } from './services/consulta.eventos.service';
 import { ConsultaTierraService } from './services/consulta.tierra.service';
 import { GraphicsService } from './services/graphics.service';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -19,7 +21,6 @@ import { PanComponent } from './components/pan/pan.component';
 import { MorenaComponent } from './components/morena/morena.component';
 
 import { APP_ROUTING } from './app.routes';
-
 
 @NgModule({
     declarations: [
@@ -40,7 +41,7 @@ import { APP_ROUTING } from './app.routes';
         NgxGaugeModule,
         APP_ROUTING
     ],
-    providers: [ ConsultaEventosService, ConsultaTierraService, GraphicsService ],
+    providers: [ ConsultaEventosService, ConsultaTierraService, GraphicsService, AuthService, AuthGuardService ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
