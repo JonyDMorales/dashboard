@@ -6,9 +6,13 @@ function gastoTotal(req, res) {
     let persona = req.body['persona'];
     let categoria = req.body['categoria'];
     let subcategoria = req.body['subcategoria'];
+    let circunscripcion = req.body['circunscripcion'];
+    let estado = req.body['estado'];
+    let created_at1 = req.body['created_at1'];
+    let created_at2 = req.body['created_at2'];
     let total = 0;
 
-    interfisca.consultarEventoFisca(alianza, persona, categoria, subcategoria, function(docs) {
+    interfisca.consultarEventoFisca(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
         if (!docs) {
             res.send('');
         }
@@ -26,6 +30,10 @@ function estadosEventos(req, res) {
     let persona = req.body['persona'];
     let categoria = req.body['categoria'];
     let subcategoria = req.body['subcategoria'];
+    let circunscripcion = req.body['circunscripcion'];
+    let estado = req.body['estado'];
+    let created_at1 = req.body['created_at1'];
+    let created_at2 = req.body['created_at2'];
 
     let estados = {
         'AGUASCALIENTES': { conteo: 0, gasto: 0 },
@@ -62,7 +70,7 @@ function estadosEventos(req, res) {
         'ZACATECAS': { conteo: 0, gasto: 0 }
     };
 
-    interfisca.consultarEventoFisca(alianza, persona, categoria, subcategoria, function(docs) {
+    interfisca.consultarEventoFisca(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
         if (!docs) {
             res.send('');
         }
@@ -82,12 +90,16 @@ function estadosEventos(req, res) {
 }
 
 function consulta(req, res) {
-    var alianza = req.body['alianza'];
-    var persona = req.body['persona'];
-    var categoria = req.body['categoria'];
-    var subcategoria = req.body['subcategoria'];
+    let alianza = req.body['alianza'];
+    let persona = req.body['persona'];
+    let categoria = req.body['categoria'];
+    let subcategoria = req.body['subcategoria'];
+    let circunscripcion = req.body['circunscripcion'];
+    let estado = req.body['estado'];
+    let created_at1 = req.body['created_at1'];
+    let created_at2 = req.body['created_at2'];
 
-    interfisca.consultarEventoFisca(alianza, persona, categoria, subcategoria, function(docs) {
+    interfisca.consultarEventoFisca(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
         if (docs)
             res.send(docs);
         else
@@ -99,12 +111,16 @@ function gastoSubcategorias(req, res) {
     let alianza = req.body['alianza'];
     let persona = req.body['persona'];
     let categoria = req.body['categoria'];
+    let circunscripcion = req.body['circunscripcion'];
+    let estado = req.body['estado'];
+    let created_at1 = req.body['created_at1'];
+    let created_at2 = req.body['created_at2'];
     let subcategorias;
     switch (categoria) {
         case 'estructura':
             subcategorias = {
-                'arañas': 0,
-                'baños públicos': 0,
+                'banner': 0,
+                'baños publicos': 0,
                 'carpas': 0,
                 'escenario': 0,
                 'gradas': 0,
@@ -120,8 +136,7 @@ function gastoSubcategorias(req, res) {
 
         case 'animacion':
             subcategorias = {
-                'animador/maestro de ceremonias': 0,
-                'artistas': 0,
+                'animacion': 0,
                 'edecanes': 0,
                 'grupos musicales / djs': 0,
                 'otros': 0
@@ -130,7 +145,7 @@ function gastoSubcategorias(req, res) {
 
         case 'transporte':
             subcategorias = {
-                'automóviles': 0,
+                'automoviles': 0,
                 'camiones': 0,
                 'camionetas': 0,
                 'combi/microbus': 0,
@@ -143,40 +158,29 @@ function gastoSubcategorias(req, res) {
             subcategorias = {
                 'computadoras': 0,
                 'consola de audio': 0,
-                'cámaras de video': 0,
-                'dron': 0,
+                'drone': 0,
                 'equipo de audio': 0,
-                'gruas de cámara': 0,
+                'estructura del partido': 0,
+                'gruas de camara': 0,
                 'luces': 0,
-                'mermas de producción': 0,
-                'micrófonos': 0,
+                'microfonos': 0,
+                'muro de video (mas de 2 pantallas)': 0,
                 'otros': 0,
                 'pantallas': 0,
                 'personal de seguridad': 0,
                 'plantas de luz': 0,
                 'proyectores': 0,
-                'servicio médico': 0,
-                'video walls': 0
+                'camaras de video': 0,
+                'servicio medico': 0
             };
             break;
 
         case 'espectacular':
             subcategorias = {
-                'buzones/cajas de luz': 0,
-                'carteleras': 0,
-                'columnas': 0,
-                'inflables-promocionales': 0,
+                'inflable': 0,
                 'lonas': 0,
-                'marquesinas': 0,
-                'muebles urbanos': 0,
-                'muros': 0,
                 'otros': 0,
-                'panorámicos': 0,
-                'parabuses': 0,
-                'pendones': 0,
-                'puentes': 0,
-                'vallas': 0,
-                'vehículo de transporte': 0
+                'pendones': 0
             };
             break;
 
@@ -185,15 +189,12 @@ function gastoSubcategorias(req, res) {
                 'abanicos': 0,
                 'aguas': 0,
                 'banderas': 0,
-                'banderines': 0,
-                'banderolas': 0,
                 'bolsas': 0,
                 'botones': 0,
                 'camisas': 0,
                 'chaleco': 0,
                 'chamarras': 0,
                 'cobija': 0,
-                'gallardetes': 0,
                 'gorras': 0,
                 'impermeable': 0,
                 'lonches': 0,
@@ -202,17 +203,15 @@ function gastoSubcategorias(req, res) {
                 'mantas (igual o mayor a 12 mts)': 0,
                 'mantas (menores a 12 mts)': 0,
                 'microperforadores': 0,
-                'mochilas': 0,
                 'otros': 0,
                 'paliacates': 0,
                 'playeras': 0,
                 'pulseras': 0,
                 'refrescos': 0,
                 'sombrillas': 0,
-                'stikers': 0,
+                'stickers': 0,
                 'sudadera': 0,
                 'tortilleros': 0,
-                'tripticos': 0,
                 'vasos': 0,
                 'vinilonas': 0,
                 'volantes': 0,
@@ -221,7 +220,7 @@ function gastoSubcategorias(req, res) {
     }
 
     for (let subcatego in subcategorias) {
-        interfisca.consultarEventoFisca(alianza, persona, categoria, subcatego, function(docs) {
+        interfisca.consultarEventoFisca(alianza, persona, categoria, subcatego, circunscripcion, estado, created_at1, created_at2, function(docs) {
             if (!docs) {
                 res.send('');
             }
@@ -238,7 +237,7 @@ function gastoSubcategorias(req, res) {
     }
     setTimeout(() => {
         res.send({ subcategorias: subcategorias });
-    }, 5000);
+    }, 3000);
 }
 
 module.exports = {

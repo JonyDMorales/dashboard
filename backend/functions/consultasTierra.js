@@ -1,12 +1,16 @@
 var interfisca = require("../connection/mongo");
 
 function consulta(req, res) {
-    var alianza = req.body['alianza'];
-    var persona = req.body['persona'];
-    var categoria = req.body['categoria'];
-    var subcategoria = req.body['subcategoria'];
+    let alianza = req.body['alianza'];
+    let persona = req.body['persona'];
+    let categoria = req.body['categoria'];
+    let subcategoria = req.body['subcategoria'];
+    let circunscripcion = req.body['circunscripcion'];
+    let estado = req.body['estado'];
+    let created_at1 = req.body['created_at1'];
+    let created_at2 = req.body['created_at2'];
 
-    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, function(docs) {
+    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
         if (docs)
             res.send(docs);
         else
@@ -15,13 +19,17 @@ function consulta(req, res) {
 }
 
 function gastoTotal(req, res) {
-    var alianza = req.body['alianza'];
-    var persona = req.body['persona'];
-    var categoria = req.body['categoria'];
-    var subcategoria = req.body['subcategoria'];
+    let alianza = req.body['alianza'];
+    let persona = req.body['persona'];
+    let categoria = req.body['categoria'];
+    let subcategoria = req.body['subcategoria'];
+    let circunscripcion = req.body['circunscripcion'];
+    let estado = req.body['estado'];
+    let created_at1 = req.body['created_at1'];
+    let created_at2 = req.body['created_at2'];
     var total = 0;
 
-    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, function(docs) {
+    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
         if (!docs) {
             res.send('');
         }
@@ -39,6 +47,10 @@ function estadosEventos(req, res) {
     let persona = req.body['persona'];
     let categoria = req.body['categoria'];
     let subcategoria = req.body['subcategoria'];
+    let circunscripcion = req.body['circunscripcion'];
+    let estado = req.body['estado'];
+    let created_at1 = req.body['created_at1'];
+    let created_at2 = req.body['created_at2'];
 
     let estados = {
         'AGUASCALIENTES': { conteo: 0, gasto: 0 },
@@ -75,7 +87,7 @@ function estadosEventos(req, res) {
         'ZACATECAS': { conteo: 0, gasto: 0 }
     };
 
-    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, function(docs) {
+    interfisca.consultarPubfija(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
         if (!docs) {
             res.send('');
         }

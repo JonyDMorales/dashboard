@@ -11,7 +11,8 @@ export class AuthService {
         domain: 'jonyd.auth0.com',
         responseType: 'token id_token',
         audience: 'https://jonyd.auth0.com/userinfo',
-        redirectUri: 'http://dashboard-int.us-east-1.elasticbeanstalk.com/#/',
+        //redirectUri: 'http://dashboard-int.us-east-1.elasticbeanstalk.com/#/',
+        redirectUri: 'http://localhost:4200/#/',
         scope: 'openid'
     });
 
