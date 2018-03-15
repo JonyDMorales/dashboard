@@ -1,31 +1,41 @@
-<div class="row animated fadeIn text-center">
+<div class="row animated fadeIn text-center" *ngIf="_authService.isAuthenticated()">
     <div class="col-md-3">
         <app-tacometro></app-tacometro>
     </div>
     <div class="col-md-4">
         <h2> Eventos </h2>
         <hr>
-        <canvas id="eventosGastoCandidatos"> {{ eventosGastoCandidatos }} </canvas>
-        <canvas id="eventosGastoEstado" class="espacio"> {{ eventosGastoEstado }} </canvas>
-        <canvas id="eventosEstado" class="espacio"> {{ eventosEstado }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingEventosGastoCategoria"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="eventosGastoCategoria" class="espacio"> {{ eventosGastoCategoria }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingEventosGastoEstado"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
+        <canvas id="eventosGastoEstado" class="espacio"> {{ eventosGastoEstado }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingEventosEstado"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
+        <canvas id="eventosEstado" class="espacio"> {{ eventosEstado }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingEventosGastoSubcategoriaEstructura"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="eventosGastoSubcategoriaEstructura" class="espacio"> {{ eventosGastoSubcategoriaEstructura }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingEventosGastoSubcategoriaAnimacion"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="eventosGastoSubcategoriaAnimacion" class="espacio"> {{ eventosGastoSubcategoriaAnimacion }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingevEntosGastoSubcategoriaTransporte"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="eventosGastoSubcategoriaTransporte" class="espacio"> {{ eventosGastoSubcategoriaTransporte }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingEveventosGastoSubcategoriaProduccion"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="eventosGastoSubcategoriaProduccion" class="espacio"> {{ eventosGastoSubcategoriaProduccion }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingEventosGastoSubcategoriaEspectacular"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="eventosGastoSubcategoriaEspectacular" class="espacio"> {{ eventosGastoSubcategoriaEspectacular }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingEventosGastoSubcategoriaUtilitario"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="eventosGastoSubcategoriaUtilitario" class="espacio"> {{ eventosGastoSubcategoriaUtilitario }} </canvas>
-
-
     </div>
     <div class="col-md-4">
         <h2> Tierra </h2>
         <hr>
-        <canvas id="tierraGastoCandidatos"> {{ tierraGastoCandidatos }} </canvas>
-        <canvas id="tierraGastoEstado" class="espacio"> {{ tierraGastoEstado }} </canvas>
-        <canvas id="tierraConteoEstado" class="espacio"> {{ tierraConteoEstado }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingTierraGastoCategoria"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="tierraGastoCategoria" class="espacio"> {{ tierraGastoCategoria }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingTierraGastoEstado"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
+        <canvas id="tierraGastoEstado" class="espacio"> {{ tierraGastoEstado }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingTierraConteoEstado"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
+        <canvas id="tierraConteoEstado" class="espacio"> {{ tierraConteoEstado }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingTierraGastoSubcategoriaFija"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="tierraGastoSubcategoriaFija" class="espacio"> {{ tierraGastoSubcategoriaFija }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingTierraGastoSubcategoriaMovil"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="tierraGastoSubcategoriaMovil" class="espacio"> {{ tierraGastoSubcategoriaMovil }} </canvas>
     </div>
 </div>

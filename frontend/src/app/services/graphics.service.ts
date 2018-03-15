@@ -13,7 +13,7 @@ export class GraphicsService {
             options: {
                 responsive: true,
                 legend: {
-                    position: 'top',
+                    position: 'right',
                 },
                 title: {
                     fontSize: 20,
@@ -35,7 +35,7 @@ export class GraphicsService {
             options: {
                 responsive: true,
                 legend: {
-                    position: 'top',
+                    position: 'right',
                 },
                 title: {
                     fontSize: 20,

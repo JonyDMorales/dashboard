@@ -15,6 +15,7 @@ api.post('/tierra/estadostierra', Tierra.estadosEventos);
 api.post('/tierra/consulta', Tierra.consulta);
 
 var app = express();
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(function(req, res, next) {

@@ -15,25 +15,33 @@
                     </li>
 
                 </ul>
-                <span class="selec">
+
+                <span class="selec" (change)="setQuien($event.target.value)">
                     <select class="custom-select" >
-                        <option value="todos"selected>Todos</option>
-                        <option value="1">Presidente</option>
-                        <option value="2">Senador</option>
-                        <option value="3">Diputado Federal</option>
-                        <option value="3">Gobernador</option>
-                        <option value="3">Alcalde</option>
+                        <option value="">Todos</option>
+                        <option value="presidente">Presidente</option>
+                        <option value="senador">Senador</option>
+                        <option value="diputadoFed">Diputado Federal</option>
+                        <option value="gobernador">Gobernador</option>
+                        <option value="alcalde">Alcalde</option>
                     </select>
                 </span>
-                <span class="selec">
+                <span class="selec" (change)="setCircunscripcion($event.target.value)">
                     <select class="custom-select" >
-                        <option value="todos"selected>Circunscripcion</option>
+                        <option value="">Circunscripcion</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
-                        <option value="3">4</option>
-                        <option value="3">5</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
                     </select>
+                </span>
+                <span class="selec">
+                    <label class="text-white"> fecha inicio <input (change)="setFecha1($event.target.value)" type="date" ></label>
+                    <label class="text-white"> fecha termino <input (change)="setFecha2($event.target.value)" type="date" ></label>
+                </span>
+                <span class="selec">
+                    <button class="btn btn-light" (click)="reload()">Filtrar</button>
                 </span>
                 <span>
                     <button class="btn btn-dark" (click)="logout()">Logoout</button>

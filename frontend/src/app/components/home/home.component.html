@@ -1,17 +1,21 @@
-<div class="row animated fadeIn text-center">
+<div class="row animated fadeIn text-center" *ngIf="_authService.isAuthenticated()">
     <div class="col-md-3">
         <app-tacometro></app-tacometro>
     </div>
     <div class="col-md-4">
         <h2> Eventos </h2>
         <hr>
+        <div class="text-center espacio" *ngIf="loadingEventos"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="eventos"> {{ eventos }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingConteoEventos"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="conteoEventos" class="espacio"> {{ conteoEventos }} </canvas>
     </div>
     <div class="col-md-4">
         <h2> Tierra </h2>
         <hr>
+        <div class="text-center espacio" *ngIf="loadingTierra"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="tierra"> {{ tierra }} </canvas>
+        <div class="text-center espacio" *ngIf="loadingCategoriaTiera"><i class="fa fa-5x fa-refresh fa-spin"></i> <br> Cargando... </div>
         <canvas id="categoriaTierra" class="espacio"> {{ categoriaTierra }} </canvas>
     </div>
 </div>
