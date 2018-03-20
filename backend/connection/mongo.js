@@ -1,12 +1,16 @@
 var MongoClient = require('mongodb').MongoClient;
+var ObjectID = require('mongodb').ObjectID;
 var assert = require('assert');
 var interfisca;
 var url = "mongodb://integra:Integra2017@fiscadev0-shard-00-00-wntu1.mongodb.net:27017,fiscadev0-shard-00-01-wntu1.mongodb.net:27017,fiscadev0-shard-00-02-wntu1.mongodb.net:27017/test?ssl=true&replicaSet=FiscaDev0-shard-0&authSource=admin";
 
-function consultarEventoFisca(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, callback) {
+function consultarEventoFisca(id, alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, callback) {
 
     let query = {};
 
+    if (id) {
+        //query['_id'] = new ObjectID(id);
+    }
     if (alianza) {
         query['alianza'] = alianza;
     }
@@ -28,9 +32,9 @@ function consultarEventoFisca(alianza, persona, categoria, subcategoria, circuns
     }
     if (created_at1) {
         if (created_at2) {
-            query['created_at'] = { "$gte": new Date(created_at1), "$lte": new Date(created_at2) };
+            query['fecha'] = { "$gte": new Date(created_at1), "$lte": new Date(created_at2) };
         } else {
-            query['created_at'] = { "$gte": new Date(created_at1) };
+            query['fecha'] = { "$gte": new Date(created_at1) };
         }
     }
 
@@ -69,9 +73,9 @@ function consultarPubfija(alianza, persona, categoria, subcategoria, circunscrip
     }
     if (created_at1) {
         if (created_at2) {
-            query['created_at'] = { "$gte": new Date(created_at1), "$lte": new Date(created_at2) };
+            query['fecha'] = { "$gte": new Date(created_at1), "$lte": new Date(created_at2) };
         } else {
-            query['created_at'] = { "$gte": new Date(created_at1) };
+            query['fecha'] = { "$gte": new Date(created_at1) };
         }
     }
 

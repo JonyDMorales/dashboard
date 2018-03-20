@@ -2,6 +2,7 @@ var interfisca = require("../connection/mongo");
 
 
 function gastoTotal(req, res) {
+    let id = req.body['id'];
     let alianza = req.body['alianza'];
     let persona = req.body['persona'];
     let categoria = req.body['categoria'];
@@ -12,7 +13,7 @@ function gastoTotal(req, res) {
     let created_at2 = req.body['created_at2'];
     let total = 0;
 
-    interfisca.consultarEventoFisca(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
+    interfisca.consultarEventoFisca(id, alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
         if (!docs) {
             res.send('');
         }
@@ -26,6 +27,7 @@ function gastoTotal(req, res) {
 }
 
 function estadosEventos(req, res) {
+    let id = req.body['id'];
     let alianza = req.body['alianza'];
     let persona = req.body['persona'];
     let categoria = req.body['categoria'];
@@ -70,7 +72,7 @@ function estadosEventos(req, res) {
         'ZACATECAS': { conteo: 0, gasto: 0 }
     };
 
-    interfisca.consultarEventoFisca(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
+    interfisca.consultarEventoFisca(id, alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
         if (!docs) {
             res.send('');
         }
@@ -90,6 +92,7 @@ function estadosEventos(req, res) {
 }
 
 function consulta(req, res) {
+    let id = req.body['id'];
     let alianza = req.body['alianza'];
     let persona = req.body['persona'];
     let categoria = req.body['categoria'];
@@ -99,7 +102,7 @@ function consulta(req, res) {
     let created_at1 = req.body['created_at1'];
     let created_at2 = req.body['created_at2'];
 
-    interfisca.consultarEventoFisca(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
+    interfisca.consultarEventoFisca(id, alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2, function(docs) {
         if (docs)
             res.send(docs);
         else
@@ -108,6 +111,7 @@ function consulta(req, res) {
 }
 
 function gastoSubcategorias(req, res) {
+    let id = req.body['id'];
     let alianza = req.body['alianza'];
     let persona = req.body['persona'];
     let categoria = req.body['categoria'];
@@ -220,7 +224,7 @@ function gastoSubcategorias(req, res) {
     }
 
     for (let subcatego in subcategorias) {
-        interfisca.consultarEventoFisca(alianza, persona, categoria, subcatego, circunscripcion, estado, created_at1, created_at2, function(docs) {
+        interfisca.consultarEventoFisca(id, alianza, persona, categoria, subcatego, circunscripcion, estado, created_at1, created_at2, function(docs) {
             if (!docs) {
                 res.send('');
             }
