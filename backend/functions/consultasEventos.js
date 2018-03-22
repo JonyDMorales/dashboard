@@ -241,7 +241,7 @@ function gastoSubcategorias(req, res) {
     }
     setTimeout(() => {
         res.send({ subcategorias: subcategorias });
-    }, 3000);
+    }, 2000);
 }
 
 module.exports = {

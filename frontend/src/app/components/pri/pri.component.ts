@@ -12,10 +12,7 @@ export class PriComponent implements OnInit {
 
     busqueda:string = 'PRI-PVEM-PANAL';
     candidato:string = '';
-    circunscripcion:any = '';
-    fecha_inicio:Date;
-    fecha_termino:Date;
-    
+    circunscripcion:any = ''; 
 
     eventosGastoCategoria:Array<any> = [];
     loadingEventosGastoCategoria:boolean = true;
@@ -82,20 +79,8 @@ export class PriComponent implements OnInit {
         this._authService.handleAuthentication();
         this.candidato = localStorage.getItem('candidato');
         this.circunscripcion = localStorage.getItem('circunscripcion');
-        if(localStorage.getItem('fecha_inicio')){
-            this.fecha_inicio = new Date(localStorage.getItem('fecha_inicio'));
-        }else{
-            this.fecha_inicio = new Date('2018-03-01');
-        }
-        if(localStorage.getItem('fecha_termino')){
-            this.fecha_termino = new Date(localStorage.getItem('fecha_termino'));
-        }else{
-            this.fecha_termino = new Date('2018-08-01');
-        }
         console.log('candidato: ' + this.candidato);
         console.log('circunscripcion: ' + this.circunscripcion);
-        console.log('fecha_inicio: ' + this.fecha_inicio);
-        console.log('fecha_termino: ' + this.fecha_termino);
     }
 
     ngOnInit() {
@@ -123,12 +108,12 @@ export class PriComponent implements OnInit {
         let gastoProduccion:number = 0;
         let gastoEspectacular:number = 0;
         let gastoUtilitario:number = 0;
-        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'estructura', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(estructura => {
-            this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'animacion', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(animacion => {
-                this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'transporte', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(transporte => {
-                    this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'produccion', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(produccion => {
-                        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'espectacular', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(espectacular => {
-                            this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'utilitario', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(utilitario => {
+        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'estructura', '', this.circunscripcion, '', '', '').subscribe(estructura => {
+            this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'animacion', '', this.circunscripcion, '', '', '').subscribe(animacion => {
+                this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'transporte', '', this.circunscripcion, '', '', '').subscribe(transporte => {
+                    this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'produccion', '', this.circunscripcion, '', '', '').subscribe(produccion => {
+                        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'espectacular', '', this.circunscripcion, '', '', '').subscribe(espectacular => {
+                            this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, 'utilitario', '', this.circunscripcion, '', '', '').subscribe(utilitario => {
                                 for(let key in estructura){
                                     gastoEstructura += estructura[key];
                                 }
@@ -167,7 +152,7 @@ export class PriComponent implements OnInit {
     }
 
     public getEventosEstadosGasto(){
-        this._consultaEventosService.getEstadosEventos(this.busqueda, this.candidato, '', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(res => {
+        this._consultaEventosService.getEstadosEventos(this.busqueda, this.candidato, '', '', this.circunscripcion, '', '', '').subscribe(res => {
             if(res){
                 let sort = [[],[]];
                 switch(this.circunscripcion){
@@ -263,7 +248,7 @@ export class PriComponent implements OnInit {
     }
     
     public getEventosEstados(){
-        this._consultaEventosService.getEstadosEventos(this.busqueda, this.candidato, '', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(res => {
+        this._consultaEventosService.getEstadosEventos(this.busqueda, this.candidato, '', '', this.circunscripcion, '', '', '').subscribe(res => {
             if(res){
                 let sort = [[],[]];
                 switch(this.circunscripcion){
@@ -358,7 +343,7 @@ export class PriComponent implements OnInit {
     
     public getEventosGastoSubcategoriaEstructura(){
         let categoria = 'estructura';
-        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(estructura => {
+        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', '', '').subscribe(estructura => {
             let estruct = {
                 datasets: [{
                     data: Object.values(estructura),
@@ -375,7 +360,7 @@ export class PriComponent implements OnInit {
     
     public getEventosGastoSubcategoriaAnimacion(){
         let categoria = 'animacion';
-        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(animacion => {
+        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', '', '').subscribe(animacion => {
             let estruct = {
                 datasets: [{
                     data: Object.values(animacion),
@@ -393,7 +378,7 @@ export class PriComponent implements OnInit {
     
     public getEventosGastoSubcategoriaTransporte(){
         let categoria = 'transporte';
-        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(transporte => {
+        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', '', '').subscribe(transporte => {
             let estruct = {
                 datasets: [{
                     data: Object.values(transporte),
@@ -409,7 +394,7 @@ export class PriComponent implements OnInit {
     
     public getEventosGastoSubcategoriaProduccion(){ 
         let categoria = 'produccion';
-        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(produccion => {
+        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', '', '').subscribe(produccion => {
             let estruct = {
                 datasets: [{
                 data: Object.values(produccion),
@@ -426,7 +411,7 @@ export class PriComponent implements OnInit {
     
     public getEventosGastoSubcategoriaEspectacular(){
         let categoria = 'espectacular';
-        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(espectacular => {
+        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', '', '').subscribe(espectacular => {
             let estruct = {
                 datasets: [{
                 data: Object.values(espectacular),
@@ -442,7 +427,7 @@ export class PriComponent implements OnInit {
     
     public getEventosGastoSubcategoriaUtilitario(){
         let categoria = 'utilitario';
-        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(utilitario => {
+        this._consultaEventosService.getGastoSubcategoria(this.busqueda, this.candidato, categoria, '', this.circunscripcion, '', '', '').subscribe(utilitario => {
             let estruct = {
                 datasets: [{
                 data: Object.values(utilitario),
@@ -459,8 +444,8 @@ export class PriComponent implements OnInit {
     /*************** Aqui empieza Tierra, Eventos no pasar ***************/
     
     public getTierraGastoCategoria() {
-        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, 'Movil', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(movilPRI => {
-            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, 'Fija', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(fijaPRI => {
+        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, 'movil', '', this.circunscripcion, '', '', '').subscribe(movilPRI => {
+            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, 'fija', '', this.circunscripcion, '', '', '').subscribe(fijaPRI => {
                 const estructura = {
                     labels: ['Móvil', 'Fija'],
                     datasets: [{
@@ -469,6 +454,8 @@ export class PriComponent implements OnInit {
                         data: [movilPRI, fijaPRI]
                     }]
                 };
+                console.log('getTierraGastoCategoria');
+                console.log(this.busqueda + '  ' + this.candidato + '  ' + 'Movil' + '  ' + '' + '  ' + this.circunscripcion + '  ' + '' + '  ' + '' + '  ' + '');
                 this.tierraGastoCategoria = this._graphicsService.graphicBar('tierraGastoCategoria', estructura, 'Gasto de tierra por categoria');
                 this.loadingTierraGastoCategoria = false;
             });
@@ -476,7 +463,7 @@ export class PriComponent implements OnInit {
     }
     
     public getTierraGastoEstado() {
-        this._consultaTierraService.getEstadosTierra(this.busqueda, this.candidato, '', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(res => {
+        this._consultaTierraService.getEstadosTierra(this.busqueda, this.candidato, '', '', this.circunscripcion, '', '', '').subscribe(res => {
             if(res){
                 let sort = [[],[]];
                 switch(this.circunscripcion){
@@ -570,7 +557,7 @@ export class PriComponent implements OnInit {
     }
     
     public getTierraEstados(){
-        this._consultaTierraService.getEstadosTierra(this.busqueda, this.candidato, '', '', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(res =>{
+        this._consultaTierraService.getEstadosTierra(this.busqueda, this.candidato, '', '', this.circunscripcion, '', '', '').subscribe(res =>{
             if(res){
                 let sort = [[],[]];
                 switch(this.circunscripcion){
@@ -664,26 +651,26 @@ export class PriComponent implements OnInit {
     }
     
     public getTierraGastoSubcategoriaFija(){
-        const categoria = 'Fija';
-        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Bardas', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Espectaculares => {
-            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Buzones', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Bardas => {
-                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Cajas de Luz', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Lonas => {
-                    this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Carteles', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Puentes => {
-                        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Espectaculares', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Pendones => {
-                            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Espectaculares de Pantallas Digitales', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Kioscos => {
-                                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Kioscos', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Carteles => {
-                                    this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Lonas', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Parabuses => {
-                                        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Mantas (Igual o Mayor a 12 MTS)', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Mobiliario => {
-                                            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Mantas (Menores a 12 MTS)', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Volantes => {
-                                                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Marquesinas', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(VallaI => {
-                                                    this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Muebles Urbanos', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(VallaD => {
-                                                        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Pantallas Fijas', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Pantallas => {
-                                                            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Parabuses', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Propaganda => {
-                                                                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Pendones', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Buzones => {
-                                                                    this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Propaganda en Columnas', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Cajas => {
-                                                                        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Puentes', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Marquesinas => {
-                                                                            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Valla Digital', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Muebles => {
-                                                                                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Volantes', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(EspectacularesP => {
+        const categoria = 'fija';
+        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'bardas', this.circunscripcion, '', '', '').subscribe(Espectaculares => {
+            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'buzones', this.circunscripcion, '', '', '').subscribe(Bardas => {
+                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'cajas de Luz', this.circunscripcion, '', '', '').subscribe(Lonas => {
+                    this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'carteles', this.circunscripcion, '', '', '').subscribe(Puentes => {
+                        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'cspectaculares', this.circunscripcion, '', '', '').subscribe(Pendones => {
+                            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'espectaculares de pantallas digitales', this.circunscripcion, '', '', '').subscribe(Kioscos => {
+                                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'kioscos', this.circunscripcion, '', '', '').subscribe(Carteles => {
+                                    this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'lonas', this.circunscripcion, '', '', '').subscribe(Parabuses => {
+                                        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'mantas (igual o mayor a 12 mts)', this.circunscripcion, '', '', '').subscribe(Mobiliario => {
+                                            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'mantas (menores a 12 mts)', this.circunscripcion, '', '', '').subscribe(Volantes => {
+                                                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'marquesinas', this.circunscripcion, '', '', '').subscribe(VallaI => {
+                                                    this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'muebles urbanos', this.circunscripcion, '', '', '').subscribe(VallaD => {
+                                                        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'pantallas fijas', this.circunscripcion, '', '', '').subscribe(Pantallas => {
+                                                            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'parabuses', this.circunscripcion, '', '', '').subscribe(Propaganda => {
+                                                                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'pendones', this.circunscripcion, '', '', '').subscribe(Buzones => {
+                                                                    this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'propaganda en columnas', this.circunscripcion, '', '', '').subscribe(Cajas => {
+                                                                        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'puentes', this.circunscripcion, '', '', '').subscribe(Marquesinas => {
+                                                                            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'valla digital', this.circunscripcion, '', '', '').subscribe(Muebles => {
+                                                                                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'volantes', this.circunscripcion, '', '', '').subscribe(EspectacularesP => {
                                                                                             const estruct = {
                                                                                                 datasets: [{
                                                                                                 data: [ Espectaculares, Bardas, Lonas, Puentes, Pendones, Kioscos, Carteles, Parabuses, Mobiliario, Volantes, VallaI, VallaD, Pantallas, Propaganda, Buzones, Cajas, Marquesinas, Muebles, EspectacularesP],
@@ -716,14 +703,14 @@ export class PriComponent implements OnInit {
     }
     
     public getTierraGastoSubcategoriaMovil(){
-        let categoria = 'Movil';
-        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Bicicletas/Bicitaxis/Mototaxis', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Transporte => {
-            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Brigadas', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Vehiculos => {
-                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Metro', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Particulares => {
-                    this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Perifoneo', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Taxis => {
-                        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Transporte Publico', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Metro => {
-                            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Vehiculos Particulares', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Brigadas => {
-                                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'Vehiculos Publicitarios', this.circunscripcion, '', this.fecha_inicio, this.fecha_termino).subscribe(Bicicletas => {
+        let categoria = 'movil';
+        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'bicicletas/bicitaxis/mototaxis', this.circunscripcion, '', '', '').subscribe(Transporte => {
+            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'brigadas', this.circunscripcion, '', '', '').subscribe(Vehiculos => {
+                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'metro', this.circunscripcion, '', '', '').subscribe(Particulares => {
+                    this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'perifoneo', this.circunscripcion, '', '', '').subscribe(Taxis => {
+                        this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'transporte publico', this.circunscripcion, '', '', '').subscribe(Metro => {
+                            this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'vehiculos particulares', this.circunscripcion, '', '', '').subscribe(Brigadas => {
+                                this._consultaTierraService.getGastoTotalTierra(this.busqueda, this.candidato, categoria, 'vehiculos publicitarios', this.circunscripcion, '', '', '').subscribe(Bicicletas => {
                                     const estruct = {
                                         datasets: [{
                                         data: [ Transporte, Vehiculos, Particulares, Taxis, Metro, Brigadas, Bicicletas ],

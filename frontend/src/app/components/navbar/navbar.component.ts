@@ -36,16 +36,6 @@ export class NavbarComponent implements OnInit {
         //window.location.reload();
     }
 
-    public setFecha1(fecha){
-        localStorage.setItem('fecha_inicio', fecha);
-        //window.location.reload();
-    }
-
-    public setFecha2(fecha){
-        localStorage.setItem('fecha_termino', fecha);
-        //window.location.reload();
-    }
-
     public logout(){
         this._authService.logout();
     }

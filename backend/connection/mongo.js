@@ -9,7 +9,7 @@ function consultarEventoFisca(id, alianza, persona, categoria, subcategoria, cir
     let query = {};
 
     if (id) {
-        //query['_id'] = new ObjectID(id);
+        query['_id'] = new ObjectID(id);
     }
     if (alianza) {
         query['alianza'] = alianza;
