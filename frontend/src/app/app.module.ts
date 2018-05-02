@@ -17,8 +17,14 @@ import { HomeComponent } from './components/home/home.component';
 import { TacometroComponent } from './components/tacometro/tacometro.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PriComponent } from './components/pri/pri.component';
+import { PvemComponent } from './components/pvem/pvem.component';
+import { PanalComponent } from './components/panal/panal.component';
 import { PanComponent } from './components/pan/pan.component';
+import { PrdComponent } from './components/prd/prd.component';
+import { McComponent } from './components/mc/mc.component';
 import { MorenaComponent } from './components/morena/morena.component';
+import { PtComponent } from './components/pt/pt.component';
+import { PesComponent } from './components/pes/pes.component';
 
 import { APP_ROUTING } from './app.routes';
 
@@ -30,7 +36,13 @@ import { APP_ROUTING } from './app.routes';
         NavbarComponent,
         PriComponent,
         PanComponent,
-        MorenaComponent
+        MorenaComponent,
+        PvemComponent,
+        PanalComponent,
+        PrdComponent,
+        McComponent,
+        PtComponent,
+        PesComponent
     ],
     imports: [
         BrowserModule,

@@ -45,16 +45,16 @@ export class HomeComponent implements OnInit {
         setTimeout(()=>{
             window.location.reload();
             this.reload();
-        }, 45000);
+        }, 450000);
     }
 
     public getGastoTotalEventos(){
-        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', '', '', '', '', '', '').subscribe(PRI => {
-            this._consultaEventosService.getGastoTotalEventos(this.busquedaPAN, '', '', '', '', '', '', '').subscribe(PAN => {
-                this._consultaEventosService.getGastoTotalEventos(this.busquedaMORENA, '', '', '', '', '', '', '').subscribe(MORENA => {
+        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', '', '', '', '', '', '', '').subscribe(PRI => {
+            this._consultaEventosService.getGastoTotalEventos(this.busquedaPAN, '', '', '', '', '', '', '', '').subscribe(PAN => {
+                this._consultaEventosService.getGastoTotalEventos(this.busquedaMORENA, '', '', '', '', '', '', '', '').subscribe(MORENA => {
                     let estructura = {
                         datasets: [{
-                            data: [ PRI, PAN, MORENA, 0 ],
+                            data: [ PRI['total'], PAN['total'], MORENA['total'], 0 ],
                             backgroundColor: [ 'rgba(0, 143, 54, 0.65)', 'rgba(6, 51, 131, 0.65)', 'rgba(179, 40, 43, 0.65)' ],
                             label: ''
                         }],
@@ -68,36 +68,17 @@ export class HomeComponent implements OnInit {
     }
 
     public getEventosTotales() {
-        let cantidadEventosPRI:number = 0;
-        let cantidadEventosPAN:number = 0;
-        let cantidadEventosMORENA:number = 0;
-
-        this._consultaEventosService.getEstadosEventos(this.busquedaPRI, '', '', '', '', '', '', '').subscribe(estadosPRI => {
-            if(estadosPRI){
-                for(let estado in estadosPRI){
-                    cantidadEventosPRI += estadosPRI[estado].conteo;
-                }
-            }
-            this._consultaEventosService.getEstadosEventos(this.busquedaPAN, '', '', '', '', '', '', '').subscribe(estadosPAN => {
-                if(estadosPAN){
-                    for(let estado in estadosPAN){
-                        cantidadEventosPAN += estadosPAN[estado].conteo;
-                    }
-                }
-                this._consultaEventosService.getEstadosEventos(this.busquedaMORENA, '', '', '', '', '', '', '').subscribe(estadosMORENA => {
-                    if(estadosMORENA){
-                        for(let estado in estadosMORENA){
-                            cantidadEventosMORENA += estadosMORENA[estado].conteo;
-                        }
-                    }
+        this._consultaEventosService.getGastoTotalEventos(this.busquedaPRI, '', '', '', '', '', '', '', '').subscribe(PRI => {
+            this._consultaEventosService.getGastoTotalEventos(this.busquedaPAN, '', '', '', '', '', '', '', '').subscribe(PAN => {
+                this._consultaEventosService.getGastoTotalEventos(this.busquedaMORENA, '', '', '', '', '', '', '', '').subscribe(MORENA => {
                     let estructura = {
-                        labels: [ 'PRI', 'PAN', 'MORENA' ],
                         datasets: [{
+                            data: [ PRI['conteo'], PAN['conteo'], MORENA['conteo'], 0 ],
                             backgroundColor: [ 'rgba(0, 143, 54, 0.65)', 'rgba(6, 51, 131, 0.65)', 'rgba(179, 40, 43, 0.65)' ],
-                            data: [ cantidadEventosPRI, cantidadEventosPAN, cantidadEventosMORENA, 0 ]
-                        }]
+                            label: ''
+                        }],
+                        labels: [ 'PRI', 'PAN', 'MORENA' ]
                     };
-                    
                     this.conteoEventos = this._graphicsService.graphicHorizontal('conteoEventos', estructura, 'Cantidad de eventos por alianza');
                     this.loadingConteoEventos = false;
                 });
@@ -108,12 +89,12 @@ export class HomeComponent implements OnInit {
     /*************** A partir de aqui es Tierra, Eventos no pasar ***************/
 
     public getGastoTotalTierra() {
-        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', '', '', '', '', '', '').subscribe(PRI => {
-            this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', '', '', '', '', '', '').subscribe(PAN => {
-                this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', '', '', '', '', '', '').subscribe(MORENA => {
+        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', '', '', '', '', '', '', '').subscribe(PRI => {
+            this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', '', '', '', '', '', '', '').subscribe(PAN => {
+                this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', '', '', '', '', '', '', '').subscribe(MORENA => {
                     let estructura = {
                         datasets: [{
-                            data: [ PRI, PAN, MORENA ],
+                            data: [ PRI['total'], PAN['total'], MORENA['total'] ],
                             backgroundColor: [ 'rgba(0, 143, 54, 0.65)', 'rgba(6, 51, 131, 0.65)', 'rgba(179, 40, 43, 0.65)' ],
                             label: ''
                         }],
@@ -127,26 +108,26 @@ export class HomeComponent implements OnInit {
     }
 
     public getcategoriaTierra() {
-        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', 'movil', '', '', '', '', '').subscribe(movilPRI => {
-            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', 'fija', '', '', '', '', '').subscribe(fijaPRI => {
-                this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', 'movil', '', '', '', '', '').subscribe(movilPAN => {
-                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', 'fija', '', '', '', '', '').subscribe(fijaPAN => {
-                        this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', 'movil', '', '', '', '', '').subscribe(movilMORENA => {
-                            this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', 'fija', '', '', '', '', '').subscribe(fijaMORENA => {
+        this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', '', 'movil', '', '', '', '', '').subscribe(movilPRI => {
+            this._consultaTierraService.getGastoTotalTierra(this.busquedaPRI, '', '', 'fija', '', '', '', '', '').subscribe(fijaPRI => {
+                this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', '', 'movil', '', '', '', '', '').subscribe(movilPAN => {
+                    this._consultaTierraService.getGastoTotalTierra(this.busquedaPAN, '', '', 'fija', '', '', '', '', '').subscribe(fijaPAN => {
+                        this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', '', 'movil', '', '', '', '', '').subscribe(movilMORENA => {
+                            this._consultaTierraService.getGastoTotalTierra(this.busquedaMORENA, '', '', 'fija', '', '', '', '', '').subscribe(fijaMORENA => {
                                 let estructura = {
                                     labels: ['Móvil', 'Fija'],
                                     datasets: [{
                                         label: 'PRI',
                                         backgroundColor: 'rgba(0, 143, 54, 0.65)',
-                                        data: [ movilPRI, fijaPRI, 0]
+                                        data: [ movilPRI['total'], fijaPRI['total'], 0]
                                     }, {
                                         label: 'PAN',
                                         backgroundColor: 'rgba(6, 51, 131, 0.65)',
-                                        data: [movilPAN, fijaPAN, 0]
+                                        data: [movilPAN['total'], fijaPAN['total'], 0]
                                     }, {
                                         label: 'MORENA',
                                         backgroundColor: 'rgba(179, 40, 43, 0.65)',
-                                        data: [ movilMORENA, fijaMORENA, 0]
+                                        data: [ movilMORENA['total'], fijaMORENA['total'], 0]
                                     }]
                                 };
                                 this.categoriaTierra = this._graphicsService.graphicBar('categoriaTierra', estructura, 'Gasto de tierra por alianza');

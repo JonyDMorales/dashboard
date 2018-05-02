@@ -8,25 +8,42 @@
                         <a class="nav-link texto" [routerLink]=" ['PRI'] "> PRI </a>
                     </li>
                     <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link texto" [routerLink]=" ['PVEM'] "> PVEM </a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link texto" [routerLink]=" ['PANAL'] "> PANAL </a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
                         <a class="nav-link texto" [routerLink]=" ['PAN'] "> PAN </a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link texto" [routerLink]=" ['PRD'] "> PRD </a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link texto" [routerLink]=" ['MC'] "> MC </a>
                     </li>
                     <li class="nav-item" routerLinkActive="active">
                         <a class="nav-link texto" [routerLink]=" ['MORENA'] "> MORENA </a>
                     </li>
-
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link texto" [routerLink]=" ['PT'] "> PT </a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a class="nav-link texto" [routerLink]=" ['PES'] "> PES </a>
+                    </li>
                 </ul>
 
                 <span class="selec" (change)="setQuien($event.target.value)">
+                        <h6 class="text-white"> {{ candidato }} </h6>
                     <select class="custom-select" >
-                        <option value="">Todos</option>
+                        <option value="">Selecciona:</option>
                         <option value="presidente">Presidente</option>
-                        <option value="senador">Senador</option>
-                        <option value="diputadoFed">Diputado Federal</option>
                         <option value="gobernador">Gobernador</option>
-                        <option value="alcalde">Alcalde</option>
                     </select>
                 </span>
+
                 <span class="selec" (change)="setCircunscripcion($event.target.value)">
+                    <h6 class="text-white"> {{ circunscripcion }} </h6>
                     <select class="custom-select" >
                         <option value="">Circunscripcion</option>
                         <option value="1">1</option>
@@ -36,6 +53,17 @@
                         <option value="5">5</option>
                     </select>
                 </span>
+
+                <span class="selec" (change)="setEstado($event.target.value)">
+                        <h6 class="text-white"> {{ estado }} </h6>
+                        <select class="custom-select" >
+                            <option value="">Estado</option>
+                            <option value="MORELOS">Morelos</option>
+                            <option value="PUEBLA">Puebla</option>
+                            <option value="CIUDAD DE MEXICO">Ciudad de México</option>
+                        </select>
+                    </span>
+
                 <span class="selec">
                     <button class="btn btn-light" (click)="reload()">Filtrar</button>
                 </span>
@@ -50,4 +78,4 @@
             <button class="btn btn-dark" (click)="login()">Login</button>
         </div>
     </div>
-</div>
+</div>I

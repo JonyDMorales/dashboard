@@ -9,11 +9,15 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
     
-    date1:Date;
-    date2:any;
+    candidato = "";
+    circunscripcion = "";
+    estado = "";
 
     constructor(public _authService: AuthService, public _router: Router) {
         this._authService.handleAuthentication();
+        this.candidato = localStorage.getItem('candidato');
+        this.circunscripcion = localStorage.getItem('circunscripcion');
+        this.estado = localStorage.getItem('estado');
     }
 
     ngOnInit() {}
@@ -28,12 +32,14 @@ export class NavbarComponent implements OnInit {
 
     public setQuien(persona){
         localStorage.setItem('candidato', persona);
-        //this._router.navigate(['home', Math.random()]);
     }
 
     public setCircunscripcion(circunscripcion){
         localStorage.setItem('circunscripcion', circunscripcion);
-        //window.location.reload();
+    }
+
+    public setEstado(estado){
+        localStorage.setItem('estado', estado);
     }
 
     public logout(){

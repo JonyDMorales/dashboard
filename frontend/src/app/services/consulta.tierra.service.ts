@@ -10,9 +10,10 @@ export class ConsultaTierraService {
 
     constructor( private _http: HttpClient) { }
 
-    public getGastoTotalTierra(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2) {
+    public getGastoTotalTierra(alianza, partido, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2) {
         const uri = this.url + '/tierra/gastototal';
-        return this._http.post(uri, { 'alianza': alianza, 
+        return this._http.post(uri, { 'alianza': alianza,
+                                      'partido': partido,
                                       'persona': persona, 
                                       'categoria': categoria, 
                                       'subcategoria': subcategoria,
@@ -20,12 +21,13 @@ export class ConsultaTierraService {
                                       'estado': estado,
                                       'created_at1': created_at1,
                                       'created_at2': created_at2 } ).map( res => {
-            return res['total']; });
+            return res; });
     }
 
-    public getEstadosTierra(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2) {
+    public getEstadosTierra(alianza, partido, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2) {
         const uri = this.url + '/tierra/estadostierra';
         return this._http.post(uri, { 'alianza': alianza, 
+                                      'partido': partido,
                                       'persona': persona, 
                                       'categoria': categoria, 
                                       'subcategoria': subcategoria,
@@ -37,9 +39,25 @@ export class ConsultaTierraService {
         });
     }
 
-    public getConsultaTierra(alianza, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2){
+    public getSubcategoria(alianza, partido, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2) {
+        const uri = this.url + '/tierra/gastosubcategoria';
+        return this._http.post(uri, { 'alianza': alianza, 
+                                      'partido': partido,
+                                      'persona': persona, 
+                                      'categoria': categoria, 
+                                      'subcategoria': subcategoria,
+                                      'circunscripcion': circunscripcion,
+                                      'estado': estado,
+                                      'created_at1': created_at1,
+                                      'created_at2': created_at2 } ).map((res) => {
+            return res['subcategorias'];
+        });
+    }
+
+    public getConsultaTierra(alianza, partido, persona, categoria, subcategoria, circunscripcion, estado, created_at1, created_at2){
         const uri = this.url + '/tierra/consulta';
         return this._http.post(uri, { 'alianza': alianza, 
+                                      'partido': partido,
                                       'persona': persona, 
                                       'categoria': categoria, 
                                       'subcategoria': subcategoria,
